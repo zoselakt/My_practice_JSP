@@ -1,0 +1,48 @@
+package user;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class UserDAO {
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	
+	public UserDAO() {
+		try {
+			String dbURL = "jdbc:oracle:thin:@localhost:1521:BBS";
+			String dbID = "hr";
+			String dbpassword = "hr";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbpassword);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public int login(String UserID, String UserPassword) {
+		String SQL = "SELECT UserPassword FROM USER WHERE UserID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, UserID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getString(1).equals(UserPassword)) {
+					return 1;
+				}
+				else {
+					return 0;
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return -2;
+	}
+}

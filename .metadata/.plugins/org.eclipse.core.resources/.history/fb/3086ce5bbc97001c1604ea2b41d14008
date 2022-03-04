@@ -1,0 +1,7 @@
+package com.jspex.beans;
+
+public class DBconnecter {
+	public static Connection getConnection() {
+		Connection conn = null;
+	}
+}

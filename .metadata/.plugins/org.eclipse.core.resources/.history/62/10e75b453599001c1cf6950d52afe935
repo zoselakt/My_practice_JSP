@@ -1,0 +1,11 @@
+package dao;
+
+import java.sql.Connection;
+
+public class DBConnecter {
+	public static Connection getconnection() {
+		String url = "jdbc:oracle:thin:@localhost;
+		String user = ""; 
+		String pw = "";
+	}
+}

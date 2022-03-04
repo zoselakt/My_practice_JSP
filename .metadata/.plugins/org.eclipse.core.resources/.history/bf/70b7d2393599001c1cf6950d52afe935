@@ -1,0 +1,9 @@
+package dao;
+
+import java.sql.Connection;
+
+public class DBConnecter {
+	public static Connection getconnection() {
+		String url = "";
+	}
+}

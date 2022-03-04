@@ -1,0 +1,27 @@
+INDEX VERSION 1.131
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\585507707.index
+\day07\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\723433157.index
+\BBS\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3470638564.index
+\day05\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3453716123.index
+\day01\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1415189393.index
+\day07\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3125105771.index
+\day02\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3725031322.index
+\BBS\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1349696522.index
+\day08\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1901855365.index
+\day4\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\568334340.index
+\day03\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1433989515.index
+\day04\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3108204308.index
+\day06\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3419926629.index
+\day09\src

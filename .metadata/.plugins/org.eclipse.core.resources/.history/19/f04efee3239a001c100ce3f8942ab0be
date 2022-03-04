@@ -1,0 +1,9 @@
+package user;
+
+public class User {
+	private String USERID;
+	private String USERPASSWORD;
+	private String USERNAME;
+	private String USERGENDER;
+	private String USEREMAIL;
+}

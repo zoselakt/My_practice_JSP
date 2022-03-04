@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <jsp:useBean class="dao.UserDAO" id="dao"/>
+<%
+	String id = request.getParameter("id");
+	String pw = request.getParameter("password");
+	
+//	HttpSession session = request.getSession();
+	if(dao.login(id, pw)){
+		session.setAttribute("id", id);		
+	}
+%>

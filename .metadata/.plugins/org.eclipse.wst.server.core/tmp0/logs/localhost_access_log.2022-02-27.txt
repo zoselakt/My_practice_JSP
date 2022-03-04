@@ -1,0 +1,16 @@
+127.0.0.1 - - [27/Feb/2022:20:55:58 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:20:55:59 +0900] "GET /day4/javabeans_Test.jsp HTTP/1.1" 200 205
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:20:55:59 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:20:56:23 +0900] "GET /day4/javabeans_Test.jsp HTTP/1.1" 200 208
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:20:58:46 +0900] "GET /day4/javabeans_Test.jsp HTTP/1.1" 200 192
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:00:49 +0900] "GET /day4/javabeans_Test.jsp HTTP/1.1" 200 287
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:12:22 +0900] "GET /day4/javabeans_Test.jsp HTTP/1.1" 200 394
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:13:43 +0900] "GET /day4/javabeans_Test.jsp HTTP/1.1" 200 364
+127.0.0.1 - - [27/Feb/2022:21:40:09 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:40:11 +0900] "GET /day05/object.jsp HTTP/1.1" 200 929
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:42:14 +0900] "GET /day05/object.jsp HTTP/1.1" 200 1023
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:42:16 +0900] "GET /day05/object.jsp?name=qwe&birthday= HTTP/1.1" 200 1023
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:42:34 +0900] "GET /day05/object.jsp?name=kim&birthday=2021-01-29 HTTP/1.1" 200 1023
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:45:48 +0900] "GET /day05/object.jsp HTTP/1.1" 200 1047
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:45:53 +0900] "GET /day05/object_ok.jsp?name=%EA%B9%80%EA%B4%91%EB%8F%99&birthday= HTTP/1.1" 200 267
+0:0:0:0:0:0:0:1 - - [27/Feb/2022:21:45:58 +0900] "GET /day05/object_ok.jsp?name=%EA%B9%80%EA%B4%91%EB%8F%99&birthday=2022-02-10 HTTP/1.1" 200 277

@@ -1,0 +1,16 @@
+package dao;
+
+import java.sql.Connection;
+
+public class DBConnecter {
+	public static Connection getconnection() {
+		try {
+			String url = "jdbc:oracle:thin:@localhost:1521:XE";
+			String user = "hr"; 
+			String pw = "hr";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+}

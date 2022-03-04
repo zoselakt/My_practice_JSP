@@ -1,0 +1,21 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class UserDAO {
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	
+	public UserDAO() {
+		try {
+			String dbURL = "jdbc:oracle:thin:@localhost:1521/BBS";
+			String dbID = "rs";
+			String dbpassword = "hr";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

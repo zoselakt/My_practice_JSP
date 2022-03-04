@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scripting Tag 실습</title>
+</head>
+<body>
+	<!-- 아래 모양과 같이 테이블 만들기 
+	□
+	□□
+	□□□
+	□□□□
+	□□□□□
+	□□□□
+	□□□
+	□□
+	□-->
+	<table border = "1">
+		<%for(int i=0; i<5; i++) {%>
+			<% for(int j=i; j<0; j--) { %>
+			
+			<%} %>
+		<%} %>
+	</table>
+	
+</body>
+</html>
