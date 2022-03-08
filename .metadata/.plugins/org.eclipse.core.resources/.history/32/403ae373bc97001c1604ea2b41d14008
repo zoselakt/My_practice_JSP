@@ -1,9 +1,0 @@
-package com.jspex.beans;
-
-import java.sql.Connection;
-
-public class DBconnecter {
-	public static Connection getConnection() {
-		Connection conn = null;
-	}
-}

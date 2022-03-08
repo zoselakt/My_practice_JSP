@@ -15,6 +15,8 @@ C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\37250
 \BBS\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1349696522.index
 \day08\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2347242353.index
+\day10\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1901855365.index
 \day4\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\568334340.index
