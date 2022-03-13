@@ -1,9 +1,0 @@
-package user;
-
-public class User {
-	private String UserID;
-	private String UserPassword;
-	private String UserName;
-	private String UserGender;
-	private String UserEmail;
-}

@@ -1,7 +1,0 @@
-<%
-	if(request.getParameter("id").equals("hds1234")){
-		out.println("실패");
-	}else{
-		out.println("성공")ㅣ;		
-	}
-%>
