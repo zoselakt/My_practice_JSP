@@ -22,3 +22,6 @@
 3월 02, 2022 09:31:32.96 [4432:5832:0302/093132.959:ERROR:device_event_log_impl.cc(214)] [09:31:32.960] USB: usb_service_win.cc:260 Failed to get device driver name: 요소가 없습니다. (0x490)
 3월 02, 2022 09:31:34.24 [4432:7692:0302/093134.244:ERROR:connection_factory_impl.cc(425)] Failed to connect to MCS endpoint with error -105
 3월 02, 2022 09:31:34.24 [4432:1032:0302/093134.245:ERROR:get_updates_processor.cc(260)] PostClientToServerMessage() failed during GetUpdates with error 2
+
+3월 14, 2022 23:27:14.76 NEW SESSION
+3월 14, 2022 23:27:14.76 [2244:1572:0314/232714.766:ERROR:device_event_log_impl.cc(214)] [23:27:14.773] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.

@@ -5,8 +5,8 @@
 		<item value="153" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="-1" key="dialogHeight"/>
-		<item value="-1" key="dialogWidth"/>
+		<item value="941" key="dialogHeight"/>
+		<item value="584" key="dialogWidth"/>
 		<list key="textEntries">
 		</list>
 		<list key="orderedElements">
@@ -17,11 +17,9 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.jdt.ui.wizards.NewPackageCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.wst.jsdt.ui.NewJSWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.jdt.ui.java"/>
-			<item value="org.eclipse.jdt.ui.java/org.eclipse.jdt.debug.ui.java"/>
-			<item value="org.eclipse.pde.PDE"/>
+			<item value="org.eclipse.wst.jsdt.ui.java"/>
 		</list>
 	</section>
 </section>

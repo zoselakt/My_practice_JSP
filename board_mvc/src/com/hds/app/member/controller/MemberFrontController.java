@@ -2,6 +2,7 @@ package com.hds.app.member.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,22 @@ public class MemberFrontController extends HttpServlet{
 		ActionForward forward = null;
 		
 		if(command.equals("/member/MemberCheckIdOk.me")) {
+			try {
+				forward = new MemberCheckIdOk().execute(req, resp);
+			} catch (Exception e) {
+				System.out.println("아이디 중복검사 오류"+e);
+			}
+		}else if(command.equals("/member/MemberJoinOk.me")) {
 			
+		}
+		
+		if(forward != null) {
+			if(forward.isRedirect()) {
+				resp.sendRedirect(forward.getPath());
+			}else {
+				RequestDispatcher dispatcher = req.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(req, resp);
+			}
 		}
 	}
 }
