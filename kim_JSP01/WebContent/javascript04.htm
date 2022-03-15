@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+	/* for문 사용
+	function gugudan(x){
+		for(i = 1; i <= 9; ++i){
+			document.write(x + "*" + i+"="+x*i+"<br>");
+		}
+	}
+	*/
+	
+	function gugudan(x){
+		var i = 1;
+		while(i <= 9){
+			document.write(x + "*"+i+" = "+x*i+"<br>");
+			i++;
+		}
+	}
+</script>
+
+
+</head>
+<body>
+구구단 출력<br>
+<script>
+	var aa = prompt("원하는 구구단은 몇단인가요?");
+	gugudan(aa);
+</script>
+</body>
+</html>

@@ -10,15 +10,13 @@
 	<insert id="join" parameterType="member">
 		INSERT INTO TBL_MEMBER
 		(
-			memberId, memberPw, memberAge, memberGender,
-			memberEmail, memberZipcode, memberAddress, 
-			memberAddressDetail, memberAddressEtc
+			memberId, memberPw, memberAge, memberGender, memberEmail,
+			memberZipcode, memberAddress, memberAddressDetail, memberAddressEtc
 		)
 		VALUES
 		(
-			#{memberId},#{memberPw}, #{memberAge}, #{memberGender}, 
-			#{memberEmail}, #{memberZipcode}, #{memberAddress}, 
-			#{memberAddressDetail}, #{memberAddressEtc},  
+			#{memberId},#{memberPw}, #{memberAge}, #{memberGender}, #{memberEmail}, 
+			#{memberZipcode}, #{memberAddress}, #{memberAddressDetail}, #{memberAddressEtc}  
 		)
 	</insert>
 	

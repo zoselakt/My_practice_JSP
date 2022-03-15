@@ -15,10 +15,12 @@ $(".term-detail a").on("click", function(e) {
 	$("#" + $(this).attr("href")).show();
 })
 
+let check = false;
+
 function formSubmit() {
 	var form = document.joinForm;
 	
-	if(!form.memberId.value){
+	if(!form.memberId.value || !check){
 		alert("아이디를 확인해주세요.");
 		return;
 	}
@@ -38,19 +40,33 @@ function formSubmit() {
 }
 
 function checkId(id) {
+	check = false;
+	
 	if(id == ""){
 		$("#idCheck_text").text("");
+		return;
 	}
 	
 	$.ajax({
-		url:contextPath + "/member/MemberCheckIdOk.me?id=" + id,
+		url:contextPath + "/member/MemberCheckIdOk.me?memberId=" + id,
 		type:"get",
 		dataType: "json",
 		success:function(result){
-			
+			if(result.status == 'ok'){
+				$("#idCheck_text").text("사용가능");
+				$("#idCheck_text").css("color", "blue");
+				check = true;
+			} else{
+				$("#idCheck_text").text("사용불가");
+				$("#idCheck_text").css("color", "red");							
+			}
 		},
 		error:function(){
 			console.log("오류");
 		}
 	});
 }
+
+$("input[name='memberId']").keyup(function() {
+	checkId($(this).val());
+})

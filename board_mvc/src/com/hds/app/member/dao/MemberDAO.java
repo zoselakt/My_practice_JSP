@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.hds.app.member.vo.MemberVO;
-import com.hds.app.mybatis.comfig.MyBatisConfig;
+import com.hds.app.mybatis.config.MyBatisConfig;
 
 public class MemberDAO {
 	SqlSessionFactory sessionFactory = MyBatisConfig.getSqlsession_f();
@@ -21,7 +21,7 @@ public class MemberDAO {
 	}
 	
 	//회원가입
-	public void joun(MemberVO member) {
+	public void join(MemberVO member) {
 		sqlSession.insert("Member.join", member);
 	}
 	

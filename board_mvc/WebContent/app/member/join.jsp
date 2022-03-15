@@ -33,7 +33,7 @@
 						</p>
 					</header>
 					<hr>
-					<form method="post" action="${pageContext.request.contextPath}/member/MemberJoinOk.me" name="joinForm">
+					<form method="post" action="${pageContext.request.contextPath}/member/MemberLogin.me" name="joinForm">
 						<div style="display:flex; justify-content:space-around;">
 							<div style="width:40%;">
 								<p style="background:#fd3a3a2e">

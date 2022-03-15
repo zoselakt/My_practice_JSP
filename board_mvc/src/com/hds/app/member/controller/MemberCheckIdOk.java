@@ -15,6 +15,9 @@ public class MemberCheckIdOk implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
 		String memberId = req.getParameter("memberId");
 		MemberDAO dao = new MemberDAO();
 		JSONObject obj = new JSONObject();
@@ -31,5 +34,5 @@ public class MemberCheckIdOk implements Action{
 		
 		return null;
 	}
-
+//메인클래스
 }

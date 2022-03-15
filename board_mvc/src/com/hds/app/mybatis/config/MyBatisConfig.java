@@ -1,4 +1,4 @@
-package com.hds.app.mybatis.comfig;
+package com.hds.app.mybatis.config;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -14,9 +14,10 @@ public class MyBatisConfig {
 	
 	static {
 		try {
-			String resouce = "./com/hds/app/mybatis/config/config.xml";
-			Reader reader = Resources.getResourceAsReader(resouce);
+			String resource = "./com/hds/app/mybatis/config/config.xml";
+			Reader reader = Resources.getResourceAsReader(resource);
 			sqlsession_f = new SqlSessionFactoryBuilder().build(reader);
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException("초기화 문제 발생, MybatisConfig.java");

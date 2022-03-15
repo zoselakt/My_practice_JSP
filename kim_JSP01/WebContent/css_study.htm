@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>CSS_test</title>
+<style type="text/css">
+	span {color:blue; font-size:20px; font-family:돋움;}
+	.sp02 {color:green; font-size:30px; font-family:돋움; margin-left:30px}
+	
+	div {color:red; font-size:10px;}
+	#one {color:purple; font-size:10px;}
+</style>
+
+<link rel="stylesheet" type="text/css" href="css_demo.css">
+</head>
+<body>
+	<!-- CSS(Cascading Style Sheet) 사용시 장점
+		- 코드의 관리나 수정이 용이함
+		- 웹페이지 로딩 속도가 빨라짐
+		- 웹페이지를 제작하는 시간을 줄일 수 있음.
+		
+	 -->
+	 
+	 <!-- 1.인라인 스타일 시트-->
+	 <p style="color:red; font-size:100px; font-family:돋움">인라인 스타일 시트</p>
+	 
+	 <!-- 2.내부 스타일 시트 
+	  <head>태그 사이에 스타일을 정의 하는 방식
+	  
+	  <style type="text/css">
+	  	셀렉터 {속성:속성값; 속성:속성값; .... }
+	  </style>
+	 
+	 -->
+	 <span>내부 스타일 사용예</span><br>
+	 <span class="sp02">내부 스타일 사용예 2</span><br>
+	 <span>내부 스타일 사용예3</span><br>
+	 
+	 <div id="one">div 태그를 사용해보자</div>
+	 <div class="sp02">div 태그를 사용해보자!!!!!!</div>
+	 <!-- 3.외부 스타일 시트 
+	   스타일시트 파일을 css확장자로 만들어서 이 파일을 html페이지로 호출하여 사용하는 방식
+	   
+	  호출하는방식
+	  <head>태그안에 다음과 같이 작성하여 호출한다.
+	  <link rel="stylesheet" type="text/css" href="파일이름.css"> 	 
+	 -->
+	 
+   <p class="css01">외부스타일 연습입니다....</p>
+ 
+
+</body>
+</html>

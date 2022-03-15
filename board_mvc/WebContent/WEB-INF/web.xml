@@ -12,8 +12,9 @@
   
   <servlet>
   	<servlet-name>MemberFrontController</servlet-name>
-	<servlet-class>com.hds.app.member.MemberFrontController</servlet-class>  	
+	<servlet-class>com.hds.app.member.controller.MemberFrontController</servlet-class>  	
   </servlet>
+  
   <servlet-mapping>
   	<servlet-name>MemberFrontController</servlet-name>
   	<url-pattern>*.me</url-pattern>

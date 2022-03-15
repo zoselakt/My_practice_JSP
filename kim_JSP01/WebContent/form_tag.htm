@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="euc-kr">
+<title>폼태그 연습</title>
+</head>
+<body>
+  <!-- 
+   폼을 구성하는 태그들 
+   : 폼은 데이터를 전송할 때 사용하는 태그,
+     회원가입을 할때 이름, 전화번호, 주소 .. 
+   
+   <form> 자신의 태그내에 있는 데이터를 지정한 웹 주소로 전송해준다.
+   데이터 전송방식
+   GET방식  : 데이터용량이 작은 256~4096바이트
+   POST방식: 대용량의 데이터를 보낼때 유용하다.
+   
+   <form> 속성 :
+    method : 데이터 전송방식을 지정
+    name : 폼의 이름을 지정. 자바스크립트에서 폼내의 데이터를 구분할 때 사용한다.
+    action : 폼내의 데이터를 이동시킬 위치를 지정한다.
+    enctype : 대용량 파일의 데이터 속성을 지정한다.
+   
+   구성태그들
+   --------------
+   <input>
+     type:
+     text : 한줄 입력을 받을 때 사용하는 형식
+     password: 비밀번호 형태로 입력받을 때 사용하는 형식
+     radio: 상호배타적 선택
+     checkbox : 다중 선택
+     button : 자바스크립트와 연계해서 사용
+     submit : 폼의 내용을 action에서 지정한 주소로 보낼 때 사용하는 형식
+     reset : 폼의 내용을 초깃값으로 재설정할 때 사용하는 형식
+     hidden : 숨김필드로 화면에 보이지 않게 할 때 사용하는 형식
+     
+     file : 파일을 첨부할 때 사용하는 형식.   
+    
+    <select>
+    목록상자나 콤보 박스로 폼을 구성할 때 사용하는 태그
+    속성:
+    name : 필드의 이름을 지정
+    size : 목록상자에 보여지는  항목의 수를 지정한다.
+    multiple : 필드에서 여러개의 항목을 선택할 수 있도록 지정한다.
+    
+    <option>
+    select 태그가 만드는 필드의 항목을 만드는 태그
+    속성:
+    value: 항목을 선택했을 때 전송할 값을 지정한다.
+    selected : 기본적으로 선택되는 항목을 지정한다.
+    
+    <textarea>
+    여러줄을 입력하는 데이터를 사용하고자 할때 사용하는 태그
+    속성:
+    name : 필드의 이름을 지정
+    clols : 대문자 A를 기준으로 너비를 설정
+    rows : 대문자 A를 기준으로 행을 설정
+    readonly : 필드를 읽기 전용으로 지정
+   
+   -->
+   
+   <form action="http://www.naver.com/index.html" method="get">
+   <table border = 1>
+   	 <tr>
+   	   <td>아이디</td>
+   	   <td>
+   	   	<input type="text" name="id">
+   	   </td>   	   
+   	 </tr>
+   	 <tr>
+   	   <td>비밀번호</td>
+   	   <td><input type="password" name="pw"> </td>
+   	 </tr>
+   	 <tr>
+   	 <td colspan=2><input type = "submit" value="로그인"></td>
+   	 </tr>
+   	 <div><input type="reset"></div>
+   	 </table>
+   
+   <select name = "과일">
+   		<option value = "orange">오렌지</option>
+   		<option value ="banana">바나나</option>
+   		<option value = "apple">사과</option>
+   </select>
+   <br><br>
+   <select name = "choice" multiple>
+   		<option value = "orange">오렌지</option>
+   		<option value ="banana">바나나</option>
+   		<option value = "apple">사과</option>
+   </select>
+   <br>
+   <textarea name="memo" cols="50" rows="10">
+   ----간단한 메세지를 입력하세요---
+   
+   </textarea>
+   <input type= "submit" value = "전송">
+   <br>
+   
+   <input type="text" name="memo" maxlength="6" value="memo">
+   <input type="radio" name="sex" value ="man" checked>남성 
+   <input type= "radio" name="sex" value = "woman"> 여성 
+   <br>
+   <input type= "checkbox" name = "ch" value = "1"> 독서
+   <input type= "checkbox" name = "ch" value = "2"> 여행
+   <input type= "checkbox" name = "ch" value = "3"> 스포츠   
+   
+   </form>
+   
+   
+   
+</body>
+</html>

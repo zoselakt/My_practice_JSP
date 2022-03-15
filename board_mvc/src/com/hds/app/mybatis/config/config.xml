@@ -19,7 +19,7 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="com/hds/mybatis/sql/member.xml"/>
+		<mapper resource="com/hds/app/mybatis/sql/member.xml"/>
 	</mappers>
 	
 </configuration>
