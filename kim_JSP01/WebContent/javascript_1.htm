@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+var aa;
+aa = window.prompt("당신의 이름을 입력하세요..");
+document.write("당신의 이름은 "+aa+"입니다.")
+age = prompt("당신의 나이를 입력하세요..");
+//---------------------------------------------------------------
+document.write("===============================================");
+
+var jumin = prompt("주민번호 형식 : 800302-21123311 : ","주민번호를 입력하세요");
+var len = jumin.length;
+if(len != 14 || jumin.charAt(6) != '-'){
+	 alert("주민번호 형식이 잘못 되었습니다....!!!");
+}
+
+var s = jumin.charAt(7); // 성별을 나타내는 자리
+
+var xx = "";
+
+switch(s){
+	 case '1': xx="남성"; break;
+	 case '2': xx="여성"; break;
+}
+
+document.write("당신의 성별 :"+xx);
+//---------------------------------------------------------------
+document.write("===============================================");
+
+function gugudan(x){
+	var i = 1;
+	while(i <= 9){
+		document.write(x + "*"+i+" = "+x*i+"<br>");
+		i++;
+	}
+}
+
+var aa = prompt("원하는 구구단은 몇단인가요?");
+gugudan(aa);
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

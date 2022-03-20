@@ -38,10 +38,12 @@
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="com.hds.app.action.Action"/>
     <fullyQualifiedTypeName name="javax.swing.Action"/>
-    <fullyQualifiedTypeName name="com.hds.app.action.ActionForward"/>
     <fullyQualifiedTypeName name="com.hds.app.member.dao.MemberDAO"/>
     <fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="com.hds.app.member.controller.MemberCheckIdOk"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="com.hds.app.member.controller.MemberLoginOk"/>
+    <fullyQualifiedTypeName name="com.hds.app.action.ActionForward"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>
