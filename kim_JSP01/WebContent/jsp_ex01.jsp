@@ -28,6 +28,7 @@
        웹서버는 html 형태로 사용자에게 응답을 한다.
   8. 브라우저에 html실행 되어짐
   
+//-----------------------------------------------------------------------------------  
   Servlet이란?
    - servlet interface를 implements하여 생성한 자바 클래스
    - 서블릿은 서블릿엔젠에 의해 등장을 하며 여러사용자에 의해 호출 될 수 있다.
@@ -62,9 +63,13 @@
    3) 서블릿은 멀티 스레드로 동작한다.
    - Servlet은 CGI처럼 웹 브라우저로 부터 요청에 대해 각각의 프로세스를 생성하지 않는다. 각 요청에 대해서 스레드로 동작
    
-   Servlet의 생명 주기(life 사이클)
+   Servlet의 생명 주기(life 사이클) / 선처리: init전까지 , 후처리: destroy이후
    Servlet 객체생성 -> init() 호출 -> service(), doGet(), doPost() 호출 -> destroy() 호출    
    
+   선처리 어노테이션 (@PostConstruct ): 의존하는 객체를 설정한 이후에 초기화 작업을 수행할 메서드에 적용
+   후처리 어노테이션 (@PreDestroy: destroy전에 실행되어 이후까지 실행 ): 컨테이너에서 객체를 제거하기 전에 호출된 메서드에 적용
+   
+//--------------------------------------------------------------------------------   
    URL 맵핑
    맵핑 방법
    1.web.xml에서 서블릿하는 방법
@@ -94,21 +99,28 @@
     - 응답으로 사용되는 content의 타입, 화면에 출력해야 할 모든값
     - 메소드: setContentType(String type), setContentLength(int length), getWriter()
     
+    get/ post 방식
+    get
+    한글처리: tomcat서버 내 server.xml에서 <connector>에 인코딩변경
+    
+    post
+    한글처리: dopost메소드 내에서 설정 / request.setCharacterEncoding("인코딩 방식설정");
+    
     doGet메소드 호출
-    1. html form태그에서 method=get일때 호출
-    2. 주소창에서 servlet URL을 입력할때 호출 가능
+    - html form태그에서 method=get일때 호출  또는 주소창에서 servlet URL을 입력할때 호출 가능
     
     doGet메소드 출력 
     PrintWriter 메소드명 = response.getWriter(); // 웹 브라우저에 출력할 스트림을 얻어오는 과정
     out.println("<html>");
+    ...     
     out.println("</html>");
     
+    html작성후 닫는 작업 필수
+    out.close();
     
     doPost메소드 호출
-    1. html form태그에서 method=post일때 호출
-    
-    
-    
+    - html form태그에서 method=post일때 호출
+
  -->
  
  
