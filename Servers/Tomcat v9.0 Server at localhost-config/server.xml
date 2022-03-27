@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="day08" path="/day08" reloadable="true" source="org.eclipse.jst.jee.server:day08"/><Context docBase="day09" path="/day09" reloadable="true" source="org.eclipse.jst.jee.server:day09"/><Context docBase="day10" path="/day10" reloadable="true" source="org.eclipse.jst.jee.server:day10"/><Context docBase="mybatis" path="/mybatis" reloadable="true" source="org.eclipse.jst.jee.server:mybatis"/><Context docBase="board_mvc" path="/board_mvc" reloadable="true" source="org.eclipse.jst.jee.server:board_mvc"/><Context docBase="kim_JSP01" path="/kim_JSP01" reloadable="true" source="org.eclipse.jst.jee.server:kim_JSP01"/></Host>
+      <Context docBase="day10" path="/day10" reloadable="true" source="org.eclipse.jst.jee.server:day10"/><Context docBase="mybatis" path="/mybatis" reloadable="true" source="org.eclipse.jst.jee.server:mybatis"/><Context docBase="kim_JSP01" path="/kim_JSP01" reloadable="true" source="org.eclipse.jst.jee.server:kim_JSP01"/><Context docBase="jsp_03" path="/jsp_03" reloadable="true" source="org.eclipse.jst.jee.server:jsp_03"/><Context docBase="jsp_04" path="/jsp_04" reloadable="true" source="org.eclipse.jst.jee.server:jsp_04"/><Context docBase="3.board_mvc" path="/3.board_mvc" reloadable="true" source="org.eclipse.jst.jee.server:3.board_mvc"/></Host>
     </Engine>
   </Service>
 </Server>
