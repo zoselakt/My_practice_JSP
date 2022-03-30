@@ -27,12 +27,14 @@ C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\34199
 \day09\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1256513067.index
 \jsp_03\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1699551288.index
+\kim_JSP02\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2347242353.index
 \day10\src
-C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3470638564.index
-\day05\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4088621737.index
 \2.JSP_board\src
+C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3470638564.index
+\day05\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\568334340.index
 \day03\src
 C:\jsp_kgd\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1433989515.index
