@@ -42,9 +42,27 @@ getter/setter메소드는 자바빈의 필드에 데이터를 저장하고 조�
 아이디 : <jsp:getProperty name="person" property="id" />
 성별 : <jsp:getProperty name="person" property="gender" />
  
+자바 빈의 영역(Scope)
+- page(기본값): 현재 페이지의 범위에만 한정, 페이지 처리가 끝나면 유효하지 않는다.
+- request: 웹요청을 받고 처리를 완료할때 까지 유지되는 스코프 / 빈의 Scope는 request의 생명주기와 같다.
+- session: 세션의 생명주기는 설정한 유효시간이다 / 웹 세션이 생성되고 종료될 때까지 유지되어 중첩되는 스코프
+- application:웹의 서블릿 컨텍스트와 같은 범위로 유지(중첩)되는 (웹사이트가 실행되는 동안) 스코프 / 서버 종료해야 끝이남.  
 
 
+자바 빈 스코프 사용과 빈 클래스 만들기 추가설명
+- 받는 page에서는 useBean을 사용하여 주는 page와 동일한 scope 속성을 사용해야한다. 그래야 java코드를 사용할 수 있다. 
+  하지만, Expression Language로 단순히 출력하기 위해서라면 useBean을 사용하지 않아도 객체에 접근 가능하다.
 
+ex)  1번 jsp -> 2번 jsp - 3번jsp
+   1번 jsp에서 보낸 값이 -> 2번 jsp에서 <jsp:forward> 3번 jsp를 호출하면 -> 1.jsp에서 보낸 값을 출력할수있다.
+    scope 옵션을 두페이지 모두 "request"로 해주어야함.
+    
+* 계산식 보내는 페이지 작성
+  1번jsp에서 페이지속성 html파일작성 -> 
+  2번 jsp에서 기본 멤버변수,생성자,getter/setter 작성 (정보를 저장하는 빈 클래스 jsp파일) -> 
+  3번 jsp작성 (1번jsp출력페이지 - 액션태그사용)
+    
+    
 --%> -->
 
 </body>
