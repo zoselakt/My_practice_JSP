@@ -1,0 +1,17 @@
+세션: 내장객체로서 브라우저마다 한 개씩 존재하고 고유한 SessionID 생성 후 정보를 추출한다.
+
+장단점
+- JSP에서만 접근할 수 있기 떄문에 보안성이 좋고 저장용량의 한계가 거의 없다.
+- 서버에 데이터를 저장하므로 서버에 부하가 걸릴수 있다.
+- 쿠키보다 세션을 쓰는 것이 더 안정적이고 안전하지만 세션에 저장할 공간이 부족할 경우 쿠키가 사용된다.
+
+암호화와 복호화(base64)
+
+자바스크립트
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+btoa(문자열): 암호화
+atoa(문자열): 복호화
+
+자바
+Base64.getEncoder().encodeToString(문자열.getBytes())  : 암호화
+Base64.getDecoder().decode(문자열)   :  복호화

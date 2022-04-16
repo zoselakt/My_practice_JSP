@@ -1,0 +1,21 @@
+자바빈즈(액션태그) :JSP의 표준 태그를 통해 접근할 수 있는 자바 클래스로서 멤버변수와 
+getter, setter 메소드로 이루어져 있다.
+
+1. 객체생성 
+보통은 <% MemberVO member = new MemberVO();%> 로 작성하는데
+
+<jsp:useBean class="com.koreain.beans.MemberVO" id="member"> 태그형식으로 작성하게되면 가독성이 좋아진다.
+
+2. setter()
+<%member.setName("한동석");%>
+<jsp:setProperty property ="name" name="member" value="한동석">
+
+3.getter()
+<%member.getName();%>
+<jsp:getProperty property = "name" name="member">
+
+자바빈즈 규칙
+1. 패키지화 = 디폴트패키지에 이름을 붙이는것.
+2. 필드 접근자를 private으로 설정
+3. getter, setter 메소드는 public으로 설정
+4. 기본생성자 선언

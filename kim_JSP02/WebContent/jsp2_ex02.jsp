@@ -17,7 +17,7 @@
 	- executeUpdate(): 테이블의 내용을 수정, 삭제, 삽입할 때 사용(insert, update, delete)
  4. 데이터베이스 연결해제: ResultSet객체로부터 데이터 추출, Resultset Close
 	
-강사작성 데이터베이스 관리툴과의 연동방법
+강사작성 데이터베이스 관리툴과의 연동방법 / 자바 빈 사용 이전
 	1. 데이터베이스에 sql문 작성
 	2. 첫번쨰 jsp 파일에 sql문 name을 html형식으로 작성 / 화면을 띄울 jsp파일에 태그로 연결
 	3. 두번째 jsp 파일생성 후 입력한 값 받아오기
@@ -49,13 +49,23 @@
 	11. if문 작성하여 닫아준다.(if rs != null) rs.close(); / if(ps != null) ps.close / if(dbconn != null) dbconn.close();
 	
 	검색하기 만들기
-	1. jsp파일을 만든뒤 입력값(getParameter="name")과 유효성체크(if문3번 조건(null)+내용(response.sendRedirect("1번jsp"); )
+	1. jsp파일을 만든뒤 입력값(String name = getParameter("name"))과 유효성체크(if문3번 조건(null)+내용(response.sendRedirect("1번jsp"); )
 		, 데이터베이스연결 값을 작성한다.(5번, 6번내용)
 	2. ResultSet rs = ps.executeQuery(9번), rs.next(); 작성
 	3. int cnt = rs.getInt(1); // 1은 필드의 순서를 의미한다. 1부터 시작 / 데이터타입이 문자열이면 getString, 숫자형 getInt메소드를 이용한다.
 	4. rs.close(); / ps.close();
 	5. html 태그와 jsp문 작성하여 페이지를 만든다.
 		 
+	삭제하기 만들기
+	1. 위 와 동일하게 진행한다.
+	2. String sql = "delete from student where name=?"; 작성
+	3. PreparedStatement ps = dbconn.prepareStatement(sql); / ps.setString(1, name); 작성 
+	4. int n = ps.executeUpdate();
+	5. 삭제된 결과를 처리하는 String str = "삭제되었습니다"; 메세지 출력
+	6. String backUrl = "student 1.jsp"; 로 값을 전송한다.
+	7. if문으로 결과값을 처리한다. (if(n>0){str+="처리되었습니다.";backUrl="list.jsp";}{else{str += "존재하지 않습니다.";}
+	8. 자바스크립트 이용하여 결과값(alert)을 출력한다./ location.href="<%=backUrl%>"
+	9. 전체 close한다.  if(ps != null) ps.close(); / if(dbconn != null) dbconn.close();
 	--%> -->
 </body>
 </html>
