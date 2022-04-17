@@ -1,32 +1,35 @@
 package com.test.ex;
 
-import java.sql.Statement;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class joinOk
+ * Servlet implementation class LoginOk
  */
-@WebServlet("/JoinOk")
-public class JoinOk extends HttpServlet {
+@WebServlet("/LoginOk")
+public class LoginOk extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private Connection dbconn;
 	private Statement stmt;
+	private ResultSet rs;
 	
-	private String name, id, pw, hp, hp1, hp2, hp3, gender;
+	private String name, id, pw, hp ,hp2, hp3, gender;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JoinOk() {
+    public LoginOk() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +39,6 @@ public class JoinOk extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -44,35 +46,36 @@ public class JoinOk extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost");
-		doGet(request, response);
-		registerMember(request, response);
+		loginDo(request, response);
 	}
-	//가입처리: 데이터베이스 연동
-	private void registerMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-	 	request.setCharacterEncoding("UTF-8");
-	 	
-	 	name = request.getParameter("name");
-	 	id = request.getParameter("id");
-	 	pw = request.getParameter("pw");
-	 	hp = request.getParameter("hp");
-	 	hp2 = request.getParameter("hp2");
-	 	hp3 = request.getParameter("hp3");
-	 	gender = request.getParameter("gender");
-	 	
-	 	String sql = "insert into member value('"+name+"', '"+id+"', '"+pw+"','"+hp+"','"+hp2+"','"+hp3+"','"+gender+"')";
-	 	
+	
+	private void loginDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		id = request.getParameter("id");
+		pw = request.getParameter("pw");
+		
+		String sql = "select * from member where id = '"+id+"' and pw = `"+pw+"'";
+		
 	 	try {
 	 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	 		dbconn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hr", "hr");
 	 		stmt = dbconn.createStatement();
-	 		int n = stmt.executeUpdate(sql);
-	 		if(n>0) {
-	 			System.out.println("가입성공");
-	 			response.sendRedirect("joinRes.jsp");
-	 		}else {
-	 			System.out.println("가입 실패");
-	 			response.sendRedirect("join.html");
+	 		rs = stmt.executeQuery(sql);
+	 		while (rs.next()) {
+	 			name = rs.getString("name");
+	 			id = rs.getString("id");
+	 			pw = rs.getString("pw");
+	 			hp = rs.getString("hp");
+	 			hp2 = rs.getString("hp2");
+	 			hp3 = rs.getString("hp3");
+	 			gender = rs.getString("gender");
 	 		}
+	 		//세션 생성
+	 		HttpSession httpSession = request.getSession();
+	 		httpSession.setAttribute("name", name);
+	 		httpSession.setAttribute("id", id);
+	 		httpSession.setAttribute("pw", pw);
+	 		
+	 		response.sendRedirect("loginRes.jsp");
 	 	}catch(Exception e){
 	 		e.printStackTrace();
 	 	}finally {
@@ -84,5 +87,4 @@ public class JoinOk extends HttpServlet {
 			}
 		}
 	}
-
 }
