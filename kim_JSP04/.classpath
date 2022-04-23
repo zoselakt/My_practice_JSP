@@ -14,11 +14,10 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/mybatis-3.5.7/mybatis-3.5.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/json-simple-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/mybatis-3.5.7/mybatis-3.5.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/apache-tomcat-9.0.58/lib/tomcat-dbcp.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
