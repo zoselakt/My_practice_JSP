@@ -1,10 +1,7 @@
 package com.test.ex;
 
-import java.sql.Statement;
+import java.sql.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class joinOk
+ * Servlet implementation class JoinOk
  */
 @WebServlet("/JoinOk")
 public class JoinOk extends HttpServlet {
@@ -44,7 +41,6 @@ public class JoinOk extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost");
-		doGet(request, response);
 		registerMember(request, response);
 	}
 	//가입처리: 데이터베이스 연동
@@ -59,7 +55,7 @@ public class JoinOk extends HttpServlet {
 	 	hp3 = request.getParameter("hp3");
 	 	gender = request.getParameter("gender");
 	 	
-	 	String sql = "insert into member value('"+name+"', '"+id+"', '"+pw+"','"+hp+"','"+hp2+"','"+hp3+"','"+gender+"')";
+	 	String sql = "insert into member values('"+name+"', '"+id+"', '"+pw+"', '"+hp+"', '"+hp2+"', '"+hp3+"', '"+gender+"')";
 	 	
 	 	try {
 	 		Class.forName("oracle.jdbc.driver.OracleDriver");

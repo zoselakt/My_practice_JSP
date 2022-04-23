@@ -9,4 +9,12 @@ POST방식: 데이터 용량이 클때
 -> 회원정보 수정 결과(jsp) -> 로그아웃(jsp)
 
 join.html -> joinOk.java -> joinRes.jsp -> login.html
--> loginOk.java -> loginRes.jsp -> 
+-> loginOk.java -> loginRes.jsp -> modify.jsp ->modifyOk.java 
+-> modifyRes.jsp -> logOut.jsp
+
+
+DAO / DTO를 이용한 회원정보출력 
+MemberDTO -> MemberDAO -> memberview.jsp
+
+DAO를 사용하는 이유:
+DTO를 사용하는 이유:
