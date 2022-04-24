@@ -52,8 +52,9 @@
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="connectionpool.MemberDTO"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="connectionpool.MemberDTO"/>
+    <fullyQualifiedTypeName name="connectionpool.MemberDAO"/>
 </qualifiedTypeNameHistroy>

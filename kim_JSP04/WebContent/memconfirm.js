@@ -30,3 +30,18 @@ function mem_check() {
 	}
 	document.join_frm.submit();
 }
+
+function updateInfo() {
+	
+	if(document.modify_frm.pw.value == ""){ // 입력한값이  빈값과 같다면 오류출력
+		alert("패스워드를 입력하세요.")
+		document.modify_frm.pw.focus();
+		return;
+	}
+	if(document.modify_frm.pw.value != document.pw_confirm.value){ //입력한 값이 pw_comfirm의 값과 다르다면
+		alert("패스워드가 일치하지않습니다.")
+		document.modify_frm.pw.focus();
+		return;
+	}
+	document.modify_frm.submit();
+}

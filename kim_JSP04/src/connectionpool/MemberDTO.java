@@ -10,16 +10,6 @@ public class MemberDTO {
 		private String address;
 		private Timestamp rDate;
 		
-//		public MemberDTO(String id, String pw, String name, String email, String address, ) {
-//		this.name = name;
-//		this.id = id;
-//		this.pw = pw;
-//		this.hp = hp;
-//		this.hp2 = hp2;
-//		this.hp3 = hp3;
-//		this.gender = gender;
-//	}
-
 		public String getId() {
 			return id;
 		}
@@ -56,6 +46,4 @@ public class MemberDTO {
 		public void setrDate(Timestamp rDate) {
 			this.rDate = rDate;
 		}
-
-		
 }

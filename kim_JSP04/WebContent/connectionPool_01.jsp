@@ -41,8 +41,9 @@ context.xml 파일에 다음과 같이 코드를 추가한다.
 <Resource
 auth="Container"
 driverClassName = "oracle.jdbc.driver.OracleDriver"
-url = "jdbc:oracle:thin@localhost:1521:xe"
-username = "hr" / password = "hr"
+url = "jdbc:oracle:thin:@localhost:1521:xe"
+username = "hr"
+password = "hr"
 name = "jdbc/Oracle11g"
 type = "javax.sql.DataSource"
 maxActive = "50"
