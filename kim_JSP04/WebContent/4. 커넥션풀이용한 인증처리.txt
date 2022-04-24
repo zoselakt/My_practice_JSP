@@ -1,0 +1,5 @@
+
+커넥션풀
+
+join.jsp -> joinRes.jsp -> login.jsp -> loginRes.jsp -> modify.jsp 
+-> memconfirm.js -> modifyRes.jsp -> logout.jsp
