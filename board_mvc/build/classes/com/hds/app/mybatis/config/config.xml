@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.hds.app.member.vo.MemberVO" alias="member"/>
+		<typeAlias type="com.hds.app.board.vo.BoardVO" alias="board"/>
+		<typeAlias type="com.hds.app.board.vo.BoardReplyVO" alias="reply"/>
+		<typeAlias type="com.hds.app.files.vo.FilesVO" alias="files"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+				<property name="username" value="hr"/>
+				<property name="password" value="hr"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/hds/app/mybatis/sql/member.xml"/>
+		<mapper resource="com/hds/app/mybatis/sql/board.xml"/>
+		<mapper resource="com/hds/app/mybatis/sql/files.xml"/>
+	</mappers>
+</configuration>
