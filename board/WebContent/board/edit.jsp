@@ -11,4 +11,4 @@
    		dao.update(vo);
    		pageContext.setAttribute("vo", vo);
    	%>
-   	<c:redirect url=" ${pageContext.request.contextPath}/board/boardDetail.jsp?num${vo.num } "/>
+   	<c:redirect url=" ${pageContext.request.contextPath}/board/boardDetail.jsp?num=${vo.num } "/>

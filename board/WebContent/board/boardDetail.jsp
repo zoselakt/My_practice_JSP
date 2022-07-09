@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+       	<%@ page import="board.*" %>
    	<jsp:useBean id="dao" class="board.BoardDao"/>
-   	<jsp:useBean id="vo" class="board.BoardVo"/>
    	
    	<%
    		int num = Integer.parseInt(request.getParameter("num"));
-   		vo = dao.selectOne(num);
+   		BoardVo vo = dao.selectOne(num);
    		pageContext.setAttribute("vo", vo);
    	%>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 <p>번호 : ${vo.num }</p>
 <p>제목 : ${vo.title }</p>
 <p>작성자 : ${vo.writer }</p>
-<p>내용 : ${vo.content }</p>
+<p>내용 : ${vo.contents }</p>
 <p>등록일자 : ${vo.regdate }</p>
 <p>조회수 : ${vo.cnt }</p>
 

@@ -20,5 +20,7 @@
 	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/jsp_kgd/resource/mybatis-3.5.7/mybatis-3.5.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/apache-tomcat-9.0.58/lib/tomcat-dbcp.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/apache-tomcat-9.0.58/lib/servlet-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/apache-tomcat-9.0.58/lib/jsp-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

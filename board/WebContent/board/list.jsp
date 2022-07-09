@@ -3,9 +3,11 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    	<%@ page import="board.*" %>
    	<%@ page import="java.util.*" %>
+   	<jsp:useBean id="vo" class="board.BoardVo"/>
+   	<jsp:useBean id="dao" class="board.BoardDao"/>
+   	<jsp:setProperty name="vo" property="*"/>
    	
     <%
-    	BoardDao dao = new BoardDao();
     	List<BoardVo> ls = dao.selectAll();
     	pageContext.setAttribute("ls", ls);
     %>

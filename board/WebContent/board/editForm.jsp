@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ page import="board.*" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    	<jsp:useBean id="dao" class="board.BoardDao"/>
+   	<jsp:useBean id="vo" class="board.BoardVo"/>
+   	   	<jsp:setProperty name="vo" property="*"/>
    	<%
    		int num = Integer.parseInt(request.getParameter("num"));
-   		BoardVo vo = dao.selectOne(num);
+   		vo = dao.selectOne(num);
    		pageContext.setAttribute("vo", vo);
    	%>
    	
@@ -22,7 +23,7 @@
 	<input type="hidden" name="num" value="${vo.num}">
 	<input type="text" name="title" value="${vo.title}" required><br>
 	<input type="text" name="writer" value="${vo.writer}" required disabled><br>
-	<textarea rows="5" cols="30" name="content" placeholder="내용">"${vo.contents}"</textarea><br>
+	<textarea rows="5" cols="30" name="contents" placeholder="내용">"${vo.contents}"</textarea><br>
 	<input type="submit" value="수정">
 	
 </form>
