@@ -1,0 +1,34 @@
+[MVC2 패턴 게시판 구조]
+
+1. view 페이지 만들기 (글리스트, 글쓰기, 글수정, 글보기, 글삭제)
+	: 클라이언트의 요청에 대해서 FrontController에서 작업을 분기하고,
+	  해당 Command 클래스가 동작을하고 DAO를 이용한 데이터베이스 작업을 한다.
+	  DAO클래스의 결과물로 DTO객체가 View(*.jsp)로 전달되고,
+	  View에서는 클라이언트의 요청에 대한 응답을  UI화면으로 출력한다.
+	 
+	 
+2. FrontController 만들기
+   : 클라이언트의 요청을 받는 역할을 하고, 그에 해당하는 작업으로 분기시킨다.
+     패키지 : com.test.ex.frontcontroller
+     클래스명 : BFronCon
+   
+3. Command 만들기
+    FrontController에서 분기된 명령을 직접처리한다. 
+	command 인터페이스를 이용해서 Command 클래스를 제작한다.
+	
+	패키지: com.test.ex.command
+	command 인터페이스 : Bcommand
+	Bcommand를 구현한 클래스 : BwriteCmd, BupdateCmd, BdeleteCmd,...
+
+
+4. DTO (Data Transfer Object) 만들기
+	DAO로 부터 전달된 데이터를 사용자 시스템으로 전달하는 역할 
+	패키지 : com.test.ex.dto
+	DTO 클래스: Bdto
+	
+5. DAO (Data Access Object)만들기
+	데이터베이스에 연결하여 필요한 로직을 수행하는 역할
+	패키지 : com.test.ex.dto
+	DAO 클래스 : Bdao
+
+
