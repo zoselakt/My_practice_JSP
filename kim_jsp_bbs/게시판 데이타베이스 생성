@@ -1,0 +1,38 @@
+[데이터베이스 생성]
+
+  - 게시판 필드 구성
+	. 번호   (bId)
+	. 제목   (bTitle)
+	. 작성자 (bName)
+	. 작성일 (bDate)
+	. 조회수 (bHit)
+	
+	. 글내용(bContent)
+	. 답변 (bGroup)
+	. 답변글의 단계(bStep)
+	. 답변 들여쓰기(bIndent)
+  
+  
+  오라클에서 시퀀스란? (MySQL에서는 auto_increment와 같은 기능)
+  . 데이터베이스에서 숫자값이 일정한 규칙에 의해서 연속적으로 자동증가해야 하는 경우
+    숫자가 1씩 자동으로 증가하는 경우 오라클에서는 시퀀스라는 객체를 사용한다.
+  . 시퀀스는 중복되는 번호가 없다. null값이 primary key 로 번호가 삽입된다.  
+  . MsSQL에서는 identity와 같은 기능을 한다.
+  . 시퀀스 생성 기본 문법 형식
+    create SEQUENCE sequence_name
+    	START WITH n ----> 시작 번호값 n 설정
+    	increment by n ---증가값 설정 n 설정 (n이 1이면 1씩 증가)
+    	  
+  . 시퀀스 값을 알아보는 명령어
+    CURRVAL, NEXTVAL
+    CURRVAL : 현재의 시퀀스 값을 알아낼때 사용
+    NEXTVAL : 다음값을 알아낼때 사용
+    
+  . 시퀀스 삭제하는 방법
+    drop sequence 시퀀스 이름  
+    
+  . 시퀀스 수정하는 방법
+    alter sequence 시퀀스 이름  
+    
+  
+    
