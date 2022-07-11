@@ -1,0 +1,38 @@
+
+
+
+body, td, input, select, textarea{
+    font-size:13px;font-family:verdana; 
+}
+
+li{
+    list-style:none;
+}
+a:link{
+    color:black; text-decoration:none; font-size:13px; font-family:"verdana";   
+}
+
+a:visited{
+    color:blue; text-decoration:none; font-size:13px; font-family:"verdana";
+}
+
+a:hover{
+    color:red; text-decoration:underline; font-size:13px; font-family:"verdana";
+}
+
+.outLine{
+    border-top:3px double navy;border-bottom:3px double navy;
+}
+
+.m1{
+    background-color:#eeffee;
+    border-bottom:1px dotted #9922cc;
+}
+.m2{    
+    background-color:#ddcc22;
+}
+
+.m3{
+    background-color:#ffcc00;
+    border-bottom:1px dotted #9933aa;
+}
