@@ -29,10 +29,19 @@
     NEXTVAL : 다음값을 알아낼때 사용
     
   . 시퀀스 삭제하는 방법
-    drop sequence 시퀀스 이름  
+    drop sequence sequenceName
     
-  . 시퀀스 수정하는 방법
-    alter sequence 시퀀스 이름  
+  . 시퀀스 수정
+    alter sequence sequenceName  
     
-  
+  create table board(
+	bid 	number(4) primary key,
+	bName 	varchar2(20),
+	btitle 	varchar2(100),
+	bContent varchar2(300),
+	bDate 	date default sysdate,
+	bhit 	number(4) default 0,
+	bgroup 	number(4),
+	bindent 	number(4)
+);
     
