@@ -18,32 +18,19 @@ import com.test.ex.cmd.BReplyViewCommand;
 import com.test.ex.cmd.BViewCommand;
 import com.test.ex.cmd.BWriteCommand;
 
-/**
- * Servlet implementation class FrontController
- */
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public FrontController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet");
 		actionDo(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost");
 		actionDo(request,response);
@@ -52,7 +39,7 @@ public class FrontController extends HttpServlet {
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("actionDo");
 		
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		BCommand command = null;
 		
 		String viewPage = null;

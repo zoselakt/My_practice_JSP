@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.test.ex.dto.Bdto;
@@ -35,9 +34,9 @@ public class Bdao {
 		
 		try {
 			dbconn = dataSource.getConnection();
-			String sql = "select bId, bName, bTitle, bContent, bDate, bHit, gGroup, bStep, bIndent from board order by gGroup desc, bStep asc";
+			String sql = "select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from board order by bGroup desc, bStep asc";
 			pstmt = dbconn.prepareStatement(sql);
-			rs =pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				int bId = rs.getInt("bId");
@@ -46,7 +45,7 @@ public class Bdao {
 				String bContent = rs.getString("bContent");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
-				int bGroup = rs.getInt("gGroup");
+				int bGroup = rs.getInt("bgroup");
 				int bStep = rs.getInt("bStep");
 				int bIndent =rs.getInt("bIndent");
 				
@@ -74,14 +73,14 @@ public class Bdao {
 		
 		try {
 			dbconn = dataSource.getConnection();
-			String sql ="insert into board(bId, bName, bTitle, bContent, bHit,gGroup,bStep,bIndent) "
+			String sql ="insert into board(bId, bName, bTitle, bContent, bHit, bGroup, bStep, bIndent) "
 					+ "values(board_seq.nextval,?,?,?,0,board_seq.currval,0,0)";
 			pstmt = dbconn.prepareStatement(sql);
 			pstmt.setString(1, bName);
 			pstmt.setString(2, bTitle);
 			pstmt.setString(3, bContent);
 			
-			int n = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -119,7 +118,7 @@ public class Bdao {
 				String bContent = rs.getString("bContent");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
-				int bGroup = rs.getInt("gGroup");
+				int bGroup = rs.getInt("bgroup");
 				int bStep = rs.getInt("bStep");
 				int bIndent =rs.getInt("bIndent");
 				
@@ -208,7 +207,7 @@ public class Bdao {
 				String bContent = rs.getString("bContent");
 				Timestamp bDate = rs.getTimestamp("bDate");
 				int bHit = rs.getInt("bHit");
-				int bGroup = rs.getInt("gGroup");
+				int bGroup = rs.getInt("bgroup");
 				int bStep = rs.getInt("bStep");
 				int bIndent = rs.getInt("bIndent");
 				
@@ -237,7 +236,7 @@ public class Bdao {
 		
 		try {
 			dbconn = dataSource.getConnection();
-			String sql = "insert into board(bId, bName, bTitle, bContent, gGroup, bStep, bIndent)"
+			String sql = "insert into board(bId, bName, bTitle, bContent, bgroup, bStep, bIndent)"
 					+ "values(board_seq.nextval, ?,?,?,?,?,?)";
 			pstmt = dbconn.prepareStatement(sql);
 			
@@ -265,7 +264,7 @@ public class Bdao {
 		
 		try {
 			dbconn = dataSource.getConnection();
-			String sql = "update board set bStep = bStep+1 where gGroup = ? and bStep > ?";
+			String sql = "update board set bStep = bStep+1 where bgroup = ? and bStep > ?";
 			pstmt = dbconn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(sGroup));
 			pstmt.setInt(2, Integer.parseInt(sStep));
