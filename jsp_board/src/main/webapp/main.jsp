@@ -18,6 +18,11 @@
 	<form action="modify.jsp">
 		<input type="submit" value="정보수정">
 	</form>
+	<br>
+	<form action="remove_ok.jsp">
+		<input type="submit" value="회원삭제">
+	</form>
+	<br>
 	<form action="board/list.jsp">
 		<input type="submit" value="게시판 접속">
 	</form>

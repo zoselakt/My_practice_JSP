@@ -1,6 +1,7 @@
 package jsp_board.vo;
 
 public class MemberVo {
+	private int num;
 	private String memberid;
 	private String password;
 	private String name;
@@ -11,6 +12,12 @@ public class MemberVo {
 	
 	public MemberVo() {}
 	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getMemberid() {
 		return memberid;
 	}
@@ -53,14 +60,17 @@ public class MemberVo {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	@Override
 	public String toString() {
-		return "MemberVo [memberid=" + memberid + ", password=" + password + ", name=" + name + ", phone=" + phone
-				+ ", addr=" + addr + ", addr2=" + addr2 + ", gender=" + gender + "]";
+		return "MemberVo [num=" + num + ", memberid=" + memberid + ", password=" + password + ", name=" + name
+				+ ", phone=" + phone + ", addr=" + addr + ", addr2=" + addr2 + ", gender=" + gender + "]";
 	}
-	public MemberVo(String memberid, String password, String name, String phone, String addr, String addr2,
+
+	public MemberVo(int num, String memberid, String password, String name, String phone, String addr, String addr2,
 			String gender) {
 		super();
+		this.num = num;
 		this.memberid = memberid;
 		this.password = password;
 		this.name = name;
@@ -69,6 +79,4 @@ public class MemberVo {
 		this.addr2 = addr2;
 		this.gender = gender;
 	}
-	
-	
 }

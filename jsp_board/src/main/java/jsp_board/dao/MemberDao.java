@@ -16,7 +16,7 @@ public class MemberDao {
 	}
 	
 	public int addUser(MemberVo vo) {
-		String sql = "insert into jsp_Member(NUM, MEMBERID, PASSWORD, NAME, PHONE, ADDR, ADDR2, GENDER) values (JSP_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into jsp_Member(NUM, MEMBERID, PASSWORD, NAME, PHONE, ADDR, ADDR2, GENDER) values (BOARD_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		Connection con = null;
 		PreparedStatement pstmt =null;
 		int ref = -1;
@@ -147,6 +147,7 @@ public class MemberDao {
 		return vo;
 	}
 	
+	// 회원정보 다 바뀌니 수정하자!
 	public int modifyMember(MemberVo vo) {
 		String sql = "update jsp_member set password=?, name=?, phone=?, addr=?, addr2=?, gender=?";
 		Connection con = null;
@@ -176,5 +177,26 @@ public class MemberDao {
 			}
 		}
 		return n;
+	}
+	public MemberVo removeMember(MemberVo vo) {
+		String sql = "delete from jsp_member where num=?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = jdbcutil.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, vo.getNum());
+			pstmt.executeQuery();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return vo;
 	}
 }

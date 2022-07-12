@@ -1,0 +1,8 @@
+모델1 방식의 게시판
+
+jsp_kimGD - 로그인 처리
+board - 게시판
+
+을 합친 
+
+jsp_board
