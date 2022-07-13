@@ -309,7 +309,7 @@ public class Bdao {
 		}
 	}
 	
-	public ArrayList<BoardVo> findwrite(String keyword, String searchword) {
+	public int findwrite(String keyword, String searchword) {
 		int count = 0;
 		String sql = "select count(idx) as count from board where"+keyword+ "bId=?";
 		

@@ -1,0 +1,15 @@
+Web MVC
+1. add_user.jsp                                          ㅣ-> view
+       ▽
+2. AddUserServlet                                       l
+   (add_user.do)				 l
+폼파라미터 (request.getParameter("~~~")	 l
+유효성검증(JS(네트웤콜을줄이기위해사용)	 l -----> Controller  (next page처리) servlet사용시 Model2 / jsp : model1
+       ▽					 l
+3. 모델데이터로 변환(User Class)		 l
+4. 비즈니스 서비스호출			ㅣ
+(서블릿보다 자바코드로 작성-UserService class)   l
+       
+5. UserDao                                               l
+      ▽- INSERT                                         l ->Model  (비즈니스 로직)
+     DB                                                    l 

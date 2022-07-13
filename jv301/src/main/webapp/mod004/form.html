@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	<url-pattern>/mod004/hello.do<url-pattern>
+ -->
+	<form action="hello.do" method="get">
+		이름 : <input type="text" name="userName"/>
+		<input type="submit" name="확인"/>
+	</form>
+</body>
+</html>
+
+<!-- 
+회원가입 폼(add_user.html)
+회원아이디: userId
+비밀번호: passwd
+이름: userName
+주민번호: ssn (앞 6자리)
+이메일1: email(아이디)
+이메일2: email2 (메일도메인 ex: naver.com)
+관심분야: concerns(체크박스 : 다중 선택가능)
+
+회원가입 서블릿
+- 회원이 등록한 정보를 받아 회원가입에서 입력한 정보를 출력
+회원가입 폼 작성시 스크립트나 css사용가능
+
+체크박스처럼 하나 이상의 값이 전달되는 경우 서블릿에서 파라메터 정보를 받는 법
+	String[] concerns = request.getParameterValues("concerns");
+ -->
