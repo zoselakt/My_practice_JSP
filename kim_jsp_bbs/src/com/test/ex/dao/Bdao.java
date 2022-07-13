@@ -308,4 +308,32 @@ public class Bdao {
 			}
 		}
 	}
+	
+	public ArrayList<BoardVo> findwrite(String keyword, String searchword) {
+		int count = 0;
+		String sql = "select count(idx) as count from board where"+keyword+ "bId=?";
+		
+		Connection dbconn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{
+			dbconn = dataSource.getConnection();
+			pstmt = dbconn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchword + "%");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(pstmt !=null) pstmt.close();
+				if(dbconn !=null) dbconn.close();
+			}catch(Exception ee){
+				ee.printStackTrace();
+			}
+		}
+		return count;
+	}
 }

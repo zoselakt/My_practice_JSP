@@ -43,9 +43,9 @@ public class AdminDAO {
 			if(rs.next()){
 				dbPw = rs.getString("password");
 				if(dbPw.equals(pw)){
-					n = AdminDAO.ADMIN_LOGIN_SUCESS; //·Î±×ÀÎ ¼º°ø
+					n = AdminDAO.ADMIN_LOGIN_SUCESS; //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}else{
-					n = AdminDAO.ADMIN_LOGIN_PW_FAIL; //ºñ¹ø ºÒÀÏÄ¡
+					n = AdminDAO.ADMIN_LOGIN_PW_FAIL; //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
 				}
 			}else{
 				n = AdminDAO.ADMIN_LOGIN_NOT;
@@ -110,7 +110,7 @@ public class AdminDAO {
 		
 		try{
 			ctx = new InitialContext();
-			dataSource = (DataSource)ctx.lookup("java:comp/env/jdbc/Oracle11g");
+			dataSource = (DataSource)ctx.lookup("java:comp/env/jdbc/myOracle");
 			dbconn = dataSource.getConnection();
 		}catch(Exception e){
 			e.printStackTrace();

@@ -11,6 +11,25 @@
 	<hr width="500" color="blue" size="1" />
 	<h3> 리스트</h3>
 	<hr width="500" color="blue" size="1" />
+	<label>
+	<h3> 검색 </h3>
+	
+	<form method="post" name="search" action="search.jsp">
+		<table class="pull-right">
+			<tr>
+				<td>
+					<select class="form-control" name="searchField">
+					<option value="0">선택</option>
+					<option value="bbsTitle">제목</option>
+					<option value="userID">작성자</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" class="form-control"	placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+					<td><button type="submit" class="btn btn-success">검색</button></td>
+			</tr>
+		</table>
+	</form>
 	
   <table width="800" cellpadding="0" cellspacing="0" border=1>
   	<!-- 제목 -->
@@ -36,6 +55,7 @@
   	<tr>
   		<td colspan="5" align="right"><a href="write_view.do">글쓰기</a></td>
   	</tr>
+
   </table>
 </center>
 
