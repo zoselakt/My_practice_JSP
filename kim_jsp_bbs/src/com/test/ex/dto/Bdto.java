@@ -13,9 +13,6 @@ public class Bdto {
 	
 	int bHit, bGroup, bStep, bIndent;
 	
-	public Bdto(){		
-	}
-	
 	public Bdto(int bId, String bName, String bTitle, String bContent, Timestamp bDate, int bHit, int bGroup, int bStep, int bIndent){
 		this.bId = bId;
 		this.bName = bName;
@@ -27,6 +24,7 @@ public class Bdto {
 		this.bStep = bStep;
 		this.bIndent = bIndent;
 	}
+	public Bdto() {}
 
 	public int getbId() {
 		return bId;

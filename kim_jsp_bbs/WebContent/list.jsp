@@ -11,9 +11,9 @@
 	<script type="text/javascript">
 		function searchBbs(){
 			var choice = document.getElementById("choice").value;
-			var word = document.getElementById("search").value;
+			var word = document.getElementById("searchword").value;
 			
-			location.href = "list.jsp?searchWord=" + word + "&choice=" + choice;
+			location.href = "list.jsp?searchWord=" + searchword + "&choice=" + choice;
 		}
 	</script>
 	
@@ -25,7 +25,7 @@
 		<option value="content">내용</option>
 	</select>
 	<br>
-	<input type="text" id="search" value="${dao.searchword }">
+	<input type="text" id="search" value="${searchword}">
 	<button onclick="searchBbs()">검색</button>
 	
 

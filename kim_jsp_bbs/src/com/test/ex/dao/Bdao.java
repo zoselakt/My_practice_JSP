@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.test.ex.dto.Bdto;
+import com.test.ex.frontCon.JdbcUtil;
 
 public class Bdao {
 	
@@ -304,40 +305,94 @@ public class Bdao {
 		}
 	}
 	
-	public void findwrite(String keyword, String searchword) {
-		String sql = "select count(*) from board";
+	public ArrayList<Bdto> getAllSearch(String col, String word){
 		
-		String sqlword = "";
-		if(keyword.equals("title")) {
-			sqlword = " where title like '%" + searchword.trim() + "%' and del = 0";
-		}else if(keyword.equals("writer")) {
-			sqlword = " where id= '" + searchword.trim() + "'";
-		}else if(keyword.equals("content")) {
-			sqlword=" where content like '%" + searchword.trim() + "%' ";
+		ArrayList<Bdto> list = new ArrayList<Bdto>();
+		Connection conn = (Connection) JdbcUtil.getInstance();
+		PreparedStatement pstmt;
+		ResultSet rs;
+		char sb;
+		try {
+		  if(col.equals("none")) {
+				sb.setLength(0);
+				sb.append("select post_no, user_id, title, contents, hits, write_date, likes, writer, board_type, latitude, longitude ");
+				sb.append("from project_board ");
+				sb.append("where user_id like ? or title like ? or user_id like ? or writer like ? ");
+				sb.append("order by post_no desc ");
+				pstmt = conn.prepareStatement(sb.toString());
+				pstmt.setString(1, "%" + word + "%");
+				pstmt.setString(2, "%" + word + "%");
+				pstmt.setString(3, "%" + word + "%");
+				pstmt.setString(4, "%" + word + "%");
+		 
+		  } else if(col.equals("post_no")) {
+			  	
+			  sb.setLength(0);
+			  sb.append("select post_no, user_id, title, contents, hits, write_date, likes, writer, board_type, latitude, longitude ");
+			  sb.append("from project_board ");
+			  sb.append("where post_no like ? ");
+			  sb.append("order by post_no desc ");
+			  pstmt = conn.prepareStatement(sb.toString());
+			  pstmt.setString(1, "%" + word + "%");
+		  
+		  } else if(col.equals("title")) {
+			  sb.setLength(0);
+			  sb.append("select post_no, user_id, title, contents, hits, write_date, likes, writer, board_type, latitude, longitude ");
+			  sb.append("from project_board ");
+			  sb.append("where title like ? ");
+			  sb.append("order by post_no desc ");
+			  pstmt = conn.prepareStatement(sb.toString());
+			  pstmt.setString(1, "%" + word + "%");
+		 
+		  } else if(col.equals("user_id")) {
+			  sb.setLength(0);
+			  sb.append("select post_no, user_id, title, contents, hits, write_date, likes, writer, board_type, latitude, longitude ");
+			  sb.append("from project_board ");
+			  sb.append("where user_id like ? ");
+			  sb.append("order by post_no desc ");
+			  pstmt = conn.prepareStatement(sb.toString());
+			  pstmt.setString(1, "%" + word + "%");
+		 
+		  } else if(col.equals("writer")) {
+			  sb.setLength(0);
+			  sb.append("select post_no, user_id, title, contents, hits, write_date, likes, writer, board_type, latitude, longitude ");
+			  sb.append("from project_board ");
+			  sb.append("where writer like ? ");
+			  sb.append("order by post_no desc ");
+			  pstmt = conn.prepareStatement(sb.toString());
+			  pstmt.setString(1, "%" + word + "%");
+		  } else {
+              sb.append(" SELECT post_no, user_id, title, contents, hits, write_date, likes, writer, board_type, latitude, longitude ");
+              sb.append(" FROM project_board ");
+              sb.append(" ORDER BY post_no DESC");
+              pstmt = conn.prepareStatement(sb.toString());
+		  }
+		  
+			
+			
+			rs = pstmt.executeQuery();  
+				
+			while(rs.next()) { 
+				int bid = rs.getInt(1);				
+				String bName = rs.getString(2);
+				String bTitle = rs.getString(3);
+				String bContent = rs.getString(4);
+				int bHit = rs.getInt(5);								
+				String bDate = rs.getString(6);
+				String bGroup = rs.getString(7);
+				String bStep = rs.getString(8);
+				String bIndent = rs.getString(9);
+					
+				Bdto vo = new Bdto();
+					
+				list.add(vo);
+				
 		}
-		sql = sql + sqlword;
-		
-		Connection dbconn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try{
-			dbconn = dataSource.getConnection();
-			pstmt = dbconn.prepareStatement(sql);
-			pstmt.setString(1, "%" + searchword + "%");
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				int leng = rs.getInt(1);
+			}	catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			try{
-				if(pstmt !=null) pstmt.close();
-				if(dbconn !=null) dbconn.close();
-			}catch(Exception ee){
-				ee.printStackTrace();
-			}
-		}
-	}
+				return list;
+		
+	}// getAllSearch() end
 }
