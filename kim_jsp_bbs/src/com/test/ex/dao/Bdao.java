@@ -82,7 +82,6 @@ public class Bdao {
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally{			
 				try {
@@ -138,9 +137,10 @@ public class Bdao {
 		return dto;
 	}//view
 	
-	public void modify(String bId, String bName, String bTitle, String bContent){
+	public int modify(String bId, String bName, String bTitle, String bContent){
 		Connection dbconn = null;
 		PreparedStatement pstmt = null;
+		int n = 0;;
 		
 		try {
 			dbconn = dataSource.getConnection();
@@ -151,7 +151,7 @@ public class Bdao {
 			pstmt.setString(3, bContent);
 			pstmt.setInt(4,  Integer.parseInt(bId));
 			
-			int n = pstmt.executeUpdate();
+			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
@@ -162,19 +162,20 @@ public class Bdao {
 				e2.printStackTrace();
 			}
 		}
+		return n;
 	}//modify
 	
-	public void delete(String bId){
+	public int delete(String bId){
 		Connection dbconn=null;
 		PreparedStatement pstmt = null;
-		
+		int n = 0;
 		try {
 			dbconn = dataSource.getConnection();
 			String sql = "delete from board where bId = ?";
 			pstmt = dbconn.prepareStatement(sql);
 			pstmt.setInt(1,Integer.parseInt(bId));
 			
-			int n = pstmt.executeUpdate();
+			n = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
@@ -185,6 +186,7 @@ public class Bdao {
 				ee.printStackTrace();
 			}
 		}
+		return n;
 	}//delete
 	
 	public Bdto replyView(String sBid){
@@ -223,7 +225,6 @@ public class Bdao {
 				ee.printStackTrace();
 			}
 		}
-		
 		return dto;
 	} //replyView
 	
@@ -233,7 +234,6 @@ public class Bdao {
 		
 		Connection dbconn = null;
 		PreparedStatement pstmt = null;
-		
 		try {
 			dbconn = dataSource.getConnection();
 			String sql = "insert into board(bId, bName, bTitle, bContent, bgroup, bStep, bIndent)"
@@ -247,10 +247,9 @@ public class Bdao {
 			pstmt.setInt(5, Integer.parseInt(bStep)+1);
 			pstmt.setInt(6, Integer.parseInt(bIndent)+1);
 			
-			int n = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			              
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally{
 			
@@ -269,21 +268,17 @@ public class Bdao {
 			pstmt.setInt(1, Integer.parseInt(sGroup));
 			pstmt.setInt(2, Integer.parseInt(sStep));
 			
-			int n = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (SQLException e) {			
 			e.printStackTrace();
 		} finally{
-		
-				try {
-					if(pstmt !=null) pstmt.close();
-					if(dbconn !=null) dbconn.close();
-				} catch (Exception ee) {
-					ee.printStackTrace();
-				}
-			
+			try {
+				if(pstmt !=null) pstmt.close();
+				if(dbconn !=null) dbconn.close();
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			}
 		}
-		
-		
 	}//replyform
 	
 	private void plusHit(String bId){
@@ -296,7 +291,7 @@ public class Bdao {
 			pstmt = dbconn.prepareStatement(sql);
 			pstmt.setString(1, bId);
 			
-			int n = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -309,20 +304,30 @@ public class Bdao {
 		}
 	}
 	
-	public int findwrite(String keyword, String searchword) {
-		int count = 0;
-		String sql = "select count(idx) as count from board where"+keyword+ "bId=?";
+	public void findwrite(String keyword, String searchword) {
+		String sql = "select count(*) from board";
+		
+		String sqlword = "";
+		if(keyword.equals("title")) {
+			sqlword = " where title like '%" + searchword.trim() + "%' and del = 0";
+		}else if(keyword.equals("writer")) {
+			sqlword = " where id= '" + searchword.trim() + "'";
+		}else if(keyword.equals("content")) {
+			sqlword=" where content like '%" + searchword.trim() + "%' ";
+		}
+		sql = sql + sqlword;
 		
 		Connection dbconn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		try{
 			dbconn = dataSource.getConnection();
 			pstmt = dbconn.prepareStatement(sql);
 			pstmt.setString(1, "%" + searchword + "%");
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				count = rs.getInt("count");
+				int leng = rs.getInt(1);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -334,6 +339,5 @@ public class Bdao {
 				ee.printStackTrace();
 			}
 		}
-		return count;
 	}
 }

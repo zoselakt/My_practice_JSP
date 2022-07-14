@@ -1,13 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body><center>
+
+	<script type="text/javascript">
+		function searchBbs(){
+			var choice = document.getElementById("choice").value;
+			var word = document.getElementById("search").value;
+			
+			location.href = "list.jsp?searchWord=" + word + "&choice=" + choice;
+		}
+	</script>
+	
+<body>
+	<select id="choice">
+		<option value="sel">선택</option>
+		<option value="title">제목</option>
+		<option value="writer">작성자</option>
+		<option value="content">내용</option>
+	</select>
+	<br>
+	<input type="text" id="search" value="${dao.searchword }">
+	<button onclick="searchBbs()">검색</button>
+	
+
+<center>
 	<hr width="500" color="blue" size="1" />
 	<h3> 리스트</h3>
 	<hr width="500" color="blue" size="1" />

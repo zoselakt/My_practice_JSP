@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.ex.dao.Bdao;
 
-public class BSearchCommand implements BCommand{
+public class BFindCommand implements BCommand{
 	public void execute(HttpServletRequest request, HttpServletResponse response){
 		String bfind = request.getParameter("bfind");
 		String bquery = request.getParameter("bquery");

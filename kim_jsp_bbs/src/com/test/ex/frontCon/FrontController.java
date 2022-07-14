@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.ex.cmd.BCommand;
 import com.test.ex.cmd.BDelcommand;
-import com.test.ex.cmd.BSearchCommand;
 import com.test.ex.cmd.BListCommand;
 import com.test.ex.cmd.BModifyCommand;
 import com.test.ex.cmd.BReplyCommand;
@@ -79,15 +78,9 @@ public class FrontController extends HttpServlet {
 			command = new BReplyCommand();
 			command.execute(request,response);
 			viewPage ="list.do";
-		}	
-		//검색하기
-		else if(cmd.equals("/findWrite.do")){
-			command = new BSearchCommand();
-			command.execute(request,response);
-			viewPage ="findWrite.do";
 		}
 		
 		RequestDispatcher dispat = request.getRequestDispatcher(viewPage);
 		dispat.forward(request, response);
-	}	
+	}
 }
