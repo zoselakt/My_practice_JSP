@@ -1,9 +1,0 @@
-Instructor : 유비
-E-mail : yubi@gmail.com
-mod001 - 자바 웹 기술에 대한 소개
-	1.1 Http 클라이언트 - 서버 아키텍처
-	1.2 URL과 웹사이트
-	
-mod002 - 서블릿 & JSP소개
-	2.1 서블릿이란?
-	2.2
