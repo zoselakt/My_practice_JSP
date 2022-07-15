@@ -5,7 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">        #title{            height : 16;            font-family :'돋움';            font-size : 12;            text-align :center;        }    </style>
+<style type="text/css"> 
+#title{          
+	height : 16;           
+	font-family :'돋움';           
+	font-size : 12;         
+	text-align :center;     
+}
+</style>
 </head>
 <body>
 	<br>

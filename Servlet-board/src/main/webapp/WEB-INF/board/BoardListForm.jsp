@@ -6,7 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">        #wrap {            width: 800px;            margin: 0 auto 0 auto;        }        #topForm{            text-align :right;        }        #board, #pageForm, #searchForm{            text-align :center;        }                #bList{            text-align :center;        }    </style>        <script type="text/javascript">        function writeForm(){            location.href="BoardWriteForm.bo";        }    </script>
+<style type="text/css">
+#wrap{width: 800px; margin: 0 auto 0 auto; }        
+#topForm{text-align :right;}        
+#board, #pageForm, #searchForm{text-align :center;}                
+#bList{text-align :center;}    
+</style>
+<script type="text/javascript">
+function writeForm(){
+	location.href="BoardWriteForm.bo";      
+}    
+</script>
 </head>
 <body>
 	<div id="topForm">
@@ -24,18 +34,37 @@
 				<td>작성일</td>
 				<td>조회수</td>
 			</tr>
+		<c:forEach var="board" items="${requestScope.list }">
 			<tr>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
-				<td>1</td>
+				<td>${board.board_num }</td>
+				<td>
+					<a href="BoardDetailAction.do?num=${board.board_num }&pageNum=${pageNum}">
+						${board.board_subject }
+					</a>
+				</td>
+				<td><a href="#">${board.board_id}</a></td>
+				<td>${board.board_date }</td>
+				<td>${board.board_count }</td>
 			</tr>
+		</c:forEach>
 		</table>
 	</div>
 	<br>
 	<div id="pageForm">
-		페이지 번호
+		<c:if test= "${startPage != 1}">
+			<a href="BoardListAction.do?page=${startPage-1}">[이전]</a>
+		</c:if>
+		<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
+			<c:if test="${pageNum == spage}">
+				${pageNum}&nbsp;
+			</c:if>
+			<c:if test="${pageNum != spage }">
+				<a href="boardListAction.do?page=${pageNum }">${pageNum}&nbsp;</a>
+			</c:if>
+		</c:forEach>
+		<c:if test="${endPage != maxPage }">
+			<a href="boardListAction.do?page=${endPage+1}">[다음]</a>
+		</c:if>
 	</div>
 	<br>
 	<div id="searchForm">

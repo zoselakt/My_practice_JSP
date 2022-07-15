@@ -208,11 +208,39 @@ public class BoardDao {
 		try {
 			con = ju.getConnection();
 			StringBuffer sql = new StringBuffer();
-			if(opt == null) {
+			if(opt == null) { // 전체글갯수
 				sql.append("select count(*) from jsp_board");
 				pstmt = con.prepareStatement(sql.toString());
 				sql.delete(0, sql.toString().length());
+			}else if(opt.equals("0")) { //제목으로 검색한 글의 갯수
+				sql.append("select count(*) from jsp_board where board_subject like ? ");
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, '%'+condition+'%');
+				sql.delete(0, sql.toString().length());
+			}else if(opt.equals("1")) { //내용으로 검색한 글의 갯수
+				sql.append("select count(*) from jsp_board where board_content like ? ");
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, '%'+condition+'%');
+				sql.delete(0, sql.toString().length());
+			}else if(opt.equals("2")) { // 제목+내용으로 검색한 글의 갯수
+				sql.append("select count(*) from jsp_board");
+				sql.append("where board_subject like ? or board_content like ?");
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, '%'+condition+'%');
+				sql.delete(0, sql.toString().length());
+			}else if(opt.equals("3")) { // 글쓴이로 검색한ㄷ 글의 갯수
+				sql.append("select count(*) from jsp_board where board_id like ? ");
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, '%'+condition+'%');
+				sql.delete(0, sql.toString().length());
 			}
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			throw new RuntimeException(e.getMessage());
 		}
+		return result;
 	}
 }
