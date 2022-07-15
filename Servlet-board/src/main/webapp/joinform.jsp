@@ -16,7 +16,7 @@
 <b><font size="6" color="gray">회원가입</font></b>
 <br><br><br>
 
-<form action="join_ok.jsp" method="post">            
+<form action="joinok.jsp" method="post">            
 	<table>
 		<tr>
 			<td id="title">아이디</td>

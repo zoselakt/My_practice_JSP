@@ -10,7 +10,7 @@ public class JdbcUtil {
 	private static Context ctx;
 	
 	private static DataSource ds;
-	private JdbcUtil() {}
+	public JdbcUtil() {}
 	
 	static {
 		try {

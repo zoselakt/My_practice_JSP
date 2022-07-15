@@ -5,13 +5,16 @@ import java.sql.*;
 import javax.naming.NamingException;
 
 public class MemberDao {
-	private static MemberDao Instance = new MemberDao();
-	JdbcUtil ju = JdbcUtil.getInstance();
+	private static MemberDao instance;
+	private JdbcUtil ju = JdbcUtil.getInstance();
 	
 	private MemberDao() {}
 	
 	public static MemberDao getInstance() {
-		return Instance;
+		if(instance == null) {
+			instance = new MemberDao();
+		}
+		return instance;
 	}
 	public Date stringToDate(MemberVo vo) {
 		String year = vo.getBirthyy();
@@ -22,14 +25,18 @@ public class MemberDao {
 	}
 	
 	public void insertMember(MemberVo vo) throws SQLException{
-		String sql = "insert into jsp_member(ID, PASSWORD, NAME, gender, birth, EMAIL1, phone, address, reg) values (?,?,?,?, ?,?,?,?, sysdate)";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = ju.getConnection();
 			con.setAutoCommit(false);
 			
-			pstmt = con.prepareStatement(sql);
+			StringBuffer sql = new StringBuffer();
+			sql.append("insert into jsp_member");
+			sql.append("(id, password, name, gender, birth, email1, phone, address, reg)");
+			sql.append("values(?,?,?,?, ?,?,?,?, sysdate)");
+			stringToDate(vo);
+			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPassword());
 			pstmt.setString(3, vo.getName());
@@ -39,8 +46,10 @@ public class MemberDao {
 			pstmt.setString(7, vo.getPhone());
 			pstmt.setString(8, vo.getAddress());
 			pstmt.executeUpdate();
+			System.out.println(con);
 			con.commit();
-		}catch(SQLException  e){
+		}catch(SQLException e){
+			System.out.println(con);
 			con.rollback();
 			throw new RuntimeException(e.getMessage());
 		}finally {
