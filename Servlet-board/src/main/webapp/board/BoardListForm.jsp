@@ -13,16 +13,16 @@
 #bList{text-align :center;}    
 </style>
 <script type="text/javascript">
-function writeForm(){
-	location.href="BoardWriteForm.bo";      
-}    
+function writeForm(){ location.href="BoardWriteForm.do"; }
+function gomain(){ location.href="../MainForm.jsp"; }
 </script>
 </head>
 <body>
 	<div id="topForm">
-		<c:if test="${sessionScope.sessionID!=null }">
+		<c:if test="${sessionScope.sessionID != null }">
 			<input type="button" value="글쓰기" onclick="writeForm()">
 		</c:if>
+		<input type="button" value="메인으로" onclick="gomain()">
 	</div>
 	<br>
 	<div id="board">
@@ -38,7 +38,7 @@ function writeForm(){
 			<tr>
 				<td>${board.board_num }</td>
 				<td>
-					<a href="BoardDetailAction.do?num=${board.board_num }&pageNum=${pageNum}">
+					<a href="BoardDetailAction.do?num=${board.board_num }&pageNum=${spage}">
 						${board.board_subject }
 					</a>
 				</td>

@@ -37,15 +37,17 @@
 		}else{
 	%>
 	<h2><font><%= session.getAttribute("sessionID") %></font></h2><br><br>
-	<input type="button" value="로그아웃" onclick="logoutPro()"/>
+	<input type="button" value="로그아웃" onclick="logout()"/>
+	<input type="button" value="정보" onclick="header()"/>
+	<input type="button" value="게시판이동" onclick="board()"/>
 	
 	<% } %>
 	
 </body>
 </html>
 	
-<script type="text/javascript">               
-function logoutPro(){            
-	location.href="member/pro/LogoutPro.jsp";        
-	}    
+<script type="text/javascript">
+function logout(){location.href="logout.jsp";}
+function header(){location.href="Header.jsp";}
+function board(){location.href="board/BoardListForm.jsp";}
 </script>

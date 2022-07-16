@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk11">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -13,19 +13,15 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/mybatis-3.5.7/mybatis-3.5.7.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/apache-tomcat-9.0.64/lib/tomcat-dbcp.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/cos/lib/cos.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/jakarta1.1.2/lib/jstl.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/jakarta1.1.2/lib/standard.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/mybatis/mybatis-3.5.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/tomcat9/lib/tomcat-dbcp.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/cos/lib/cos.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

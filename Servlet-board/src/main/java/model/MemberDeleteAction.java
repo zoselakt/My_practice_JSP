@@ -20,7 +20,7 @@ public class MemberDeleteAction implements Action {
 		String id = session.getAttribute("sessionID").toString();
 		String password = request.getParameter("password");
 		
-		int check = dao.loginCheck(id, password);
+		int check = dao.deleteMember(id, password);
 		
 		if(check == 1 ) {
 			session.removeAttribute("sessionID");

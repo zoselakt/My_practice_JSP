@@ -6,14 +6,21 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.annotations.Param;
+
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HashMap<String, Action> commandMap;
+	
+	public void init(ServletConfig config) throws ServletException{
+		loadProperties("properties/MemberCommand");
+	}
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doget으로 보내기");
@@ -24,6 +31,7 @@ public class MemberController extends HttpServlet {
 		System.out.println("doget으로 보내기");
 		doProcess(request, response);
 	}
+	
 	private void loadProperties(String filePath) {
 		commandMap = new HashMap<String, Action>();
 		ResourceBundle rb = ResourceBundle.getBundle(filePath);
@@ -36,6 +44,7 @@ public class MemberController extends HttpServlet {
 			try {
 				Class actionClass = Class.forName(className);
 				Action actionInstance = (Action) actionClass.newInstance();
+				
 				if(className.equals("model.MemberFormChangeAction")) {
 					MemberFormChangeAction mf = (MemberFormChangeAction) actionInstance;
 					mf.setCommand(command);

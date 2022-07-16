@@ -1,8 +1,11 @@
 package controller;
 
-import java.sql.*;
-
-import javax.naming.NamingException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MemberDao {
 	private static MemberDao instance;
@@ -49,7 +52,6 @@ public class MemberDao {
 			System.out.println(con);
 			con.commit();
 		}catch(SQLException e){
-			System.out.println(con);
 			con.rollback();
 			throw new RuntimeException(e.getMessage());
 		}finally {
@@ -224,5 +226,43 @@ public class MemberDao {
 				throw new RuntimeException(e.getMessage());
 			}
 		}
+	}
+	public ArrayList<MemberVo> getMemberList(){
+		ArrayList<MemberVo> memberList = new ArrayList<MemberVo>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVo vo = null;
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("select * from jsp_member");
+			con = ju.getConnection();
+			pstmt = con.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new MemberVo();
+				vo.setId(rs.getString("id"));
+				vo.setPassword(rs.getString("password"));
+				vo.setName(rs.getString("name"));
+				vo.setGender(rs.getString("gender"));
+				vo.setBirthyy(rs.getString("birth").toString());
+				vo.setEmail1(rs.getString("email1"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setAddress(rs.getString("address"));
+				vo.setReg(rs.getTimestamp("reg"));
+				memberList.add(vo);
+			}
+		}catch(SQLException  e){
+			throw new RuntimeException(e.getMessage());
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				if(con != null) {con.close();}
+			}catch(Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return memberList;
 	}
 }

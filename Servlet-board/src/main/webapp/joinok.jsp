@@ -76,5 +76,5 @@
 		</tr>
 	</table>            
 	<br>            
-	<input type="button" value="확인">        
+	<a href="LoginForm.jsp"><input type="button" value="확인"></a>
 </div></body></html>

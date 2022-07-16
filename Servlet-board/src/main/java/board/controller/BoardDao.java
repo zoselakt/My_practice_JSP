@@ -194,6 +194,13 @@ public class BoardDao {
 			}
 		}catch(Exception e) {
 			throw new RuntimeException(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				if(con != null) {con.close();}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
 		}
 		return list;
 	}
@@ -240,6 +247,86 @@ public class BoardDao {
 			}
 		}catch(Exception e) {
 			throw new RuntimeException(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				if(con != null) {con.close();}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return result;
+	}
+	public BoardVo getDetail(int boardNum) {
+		BoardVo vo = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ju.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("select * from jsp_board where Board_num = ?");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo = new BoardVo();
+				vo.setBoard_num(rs.getInt("board_num"));
+				vo.setBoard_id(rs.getString("board_id"));
+				vo.setBoard_subject(rs.getString("board_subject"));
+				vo.setBoard_content(rs.getString("board_content"));
+				vo.setBoard_file(rs.getString("board_file"));
+				vo.setBoard_count(rs.getInt("board_count"));
+				vo.setBoard_re_ref(rs.getInt("board_re_ref"));
+				vo.setBoard_re_lev(rs.getInt("board_re_lev"));
+				vo.setBoard_re_seq(rs.getInt("board_seq"));
+				vo.setBoard_date(rs.getDate("board_date"));
+			}
+		}catch(Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				if(con != null) {con.close();}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return vo;
+	}
+	public boolean updateCount(int boardNum) {
+		boolean result = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ju.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("update jsp_board set board_count = board_count + 1");
+			sql.append("where board_num = ?");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, boardNum);
+			int flag = pstmt.executeUpdate();
+			
+			if(flag > 0) {
+				result = true;
+				con.commit();
+			}
+		}catch(Exception e) {
+			try {
+				con.rollback();
+			}catch(SQLException sqlE) {
+				sqlE.printStackTrace();
+			}
+			throw new RuntimeException(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				if(con != null) {con.close();}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
 		}
 		return result;
 	}
