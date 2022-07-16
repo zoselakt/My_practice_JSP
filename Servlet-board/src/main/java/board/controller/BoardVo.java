@@ -13,6 +13,7 @@ public class BoardVo {
 	private int board_re_lev;
 	private int board_re_seq;
 	private Date board_date;
+	private int board_parent;
 	
 	public BoardVo() {}
 	
@@ -78,17 +79,24 @@ public class BoardVo {
 	public void setBoard_count(int board_count) {
 		this.board_count = board_count;
 	}
+	public int getBoard_parent() {
+		return board_parent;
+	}
+
+	public void setBoard_parent(int board_parent) {
+		this.board_parent = board_parent;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardVo [board_num=" + board_num + ", board_id=" + board_id + ", board_subject=" + board_subject
 				+ ", board_content=" + board_content + ", board_file=" + board_file + ", board_count=" + board_count
 				+ ", board_re_ref=" + board_re_ref + ", board_re_lev=" + board_re_lev + ", board_re_seq=" + board_re_seq
-				+ ", board_date=" + board_date + "]";
+				+ ", board_date=" + board_date + ", board_parent=" + board_parent + "]";
 	}
 
 	public BoardVo(int board_num, String board_id, String board_subject, String board_content, String board_file,
-			int board_count, int board_re_ref, int board_re_lev, int board_re_seq, Date board_date) {
+			int board_count, int board_re_ref, int board_re_lev, int board_re_seq, Date board_date, int board_parent) {
 		super();
 		this.board_num = board_num;
 		this.board_id = board_id;
@@ -100,6 +108,6 @@ public class BoardVo {
 		this.board_re_lev = board_re_lev;
 		this.board_re_seq = board_re_seq;
 		this.board_date = board_date;
+		this.board_parent = board_parent;
 	}
-
 }

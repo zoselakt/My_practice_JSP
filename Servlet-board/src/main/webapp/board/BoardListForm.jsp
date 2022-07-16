@@ -38,6 +38,12 @@ function gomain(){ location.href="../MainForm.jsp"; }
 			<tr>
 				<td>${board.board_num }</td>
 				<td>
+					<c:if test="${vo.board_re_lev > 0 }">
+						<c:forEach begin="1" end="${vo.board_re_lev}">
+							&nbsp;&nbsp;
+						</c:forEach>
+						RE:
+					</c:if>
 					<a href="BoardDetailAction.do?num=${board.board_num }&pageNum=${spage}">
 						${board.board_subject }
 					</a>

@@ -39,10 +39,14 @@
 				</tr>
 				<tr align="center" valign="middle">
 					<td colspan="5">
-						<input type="button" value="수정">
-						<input type="button" value="삭제">
-						<input type="button" value="답글">
-						<input type="button" value="목록" onclick="goboard()">
+					<c:if test="${sessionScope.sessionID != null }">
+						<c:if test="${sessionScope.sessionID == vo.board_id }">
+							<input type="button" value="수정">
+							<input type="button" value="삭제">
+						</c:if>
+						<input type="button" value="답글" onclick="changeView(1)">
+					</c:if>
+					<input type="button" value="목록" onclick="goboard()">
 					</td>
 				</tr>
 			</table>
@@ -51,5 +55,6 @@
 </body>
 </html>
 <script type="text/javascript">
-function goboard( location.href="BoardListAction.do?page=${pageNum}";)
+function goboard{location.href="BoardListAction.do?page=${pageNum}";}
+function changeView(value){if(value==0) location.href="BoardListAction.do?page=${pageNum}"; else if(value ==1) location.href="BoardReplyFormAction.do?num=${vo.board_num}&page=${pageNum}"}
 </script>
