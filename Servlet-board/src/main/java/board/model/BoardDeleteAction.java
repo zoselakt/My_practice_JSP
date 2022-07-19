@@ -1,32 +1,38 @@
 package board.model;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.controller.BoardDao;
-import board.controller.BoardVo;
 import model.Action;
 import model.ActionForward;
 
-public class BoardDetailAction implements Action{
+public class BoardDeleteAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ActionForward forward = new ActionForward();
-		
 		String num = request.getParameter("num");
 		int boardNum = Integer.parseInt(num);
-		String pageNum = request.getParameter("pageNum");
-		
 		BoardDao dao = BoardDao.getInstance();
-		BoardVo vo = dao.getDetail(boardNum);
-		boolean result = dao.updateCount(boardNum);
+		String fileName = dao.getFileName(boardNum);
+		boolean result = dao.deleteBoard(boardNum);
 		
-		request.setAttribute("vo", vo);
-		request.setAttribute("pageNum", pageNum);
-		
+		if(fileName != null) {
+			String folder = request.getServletContext().getRealPath("UploadFolder");
+			String filePath = folder + "/" + fileName;
+			
+			File file = new File(filePath);
+			if(file.exists()) {
+				file.delete();
+			}
+		}
 		if(result) {
-			forward.setRedirect(false);
-			forward.setNextPath("BoardDetailForm.bo");
+			forward.setRedirect(true);
+			forward.setNextPath("BoardListAction.bo");
+		}else {
+			return null;
 		}
 		return forward;
 	}

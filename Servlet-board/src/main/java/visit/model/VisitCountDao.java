@@ -18,16 +18,20 @@ public class VisitCountDao {
 		}
 		return instance;
 	}
+	
 	public void setTotalCount() throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into visit (v_date) values(sysdate)");
+			sql.append("insert into visit (v_date) values (sysdate)");
+			
 			con = ju.getConnection();
 			con.setAutoCommit(false);
+			
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.executeUpdate();
+			
 			con.commit();
 		}catch(SQLException  e){
 			con.rollback();
@@ -46,20 +50,25 @@ public class VisitCountDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int totalCount = 0;
+		
 		try {
 			StringBuffer sql = new StringBuffer();
 			sql.append("select count(*) as totalcnt from visit");
+			
 			con = ju.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
-				totalCount = rs.getInt("totalcnt");
+				totalCount = rs.getInt("TotalCnt");
 			}
+			
 			return totalCount;
 		}catch(SQLException  e){
 			throw new RuntimeException(e.getMessage());
 		}finally {
 			try {
+				if(rs != null) {rs.close();}
 				if(pstmt != null) {pstmt.close();}
 				if(con != null) {con.close();}
 			}catch(Exception e) {
@@ -72,6 +81,7 @@ public class VisitCountDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int totalCount = 0;
+		
 		try {
 			StringBuffer sql = new StringBuffer();
 			sql.append("select count(*) as todaycnt from visit");
@@ -82,13 +92,15 @@ public class VisitCountDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				totalCount = rs.getInt("totalcnt");
+				totalCount = rs.getInt("TodayCnt");
 			}
+			
 			return totalCount;
 		}catch(SQLException  e){
 			throw new RuntimeException(e.getMessage());
 		}finally {
 			try {
+				if(rs != null) {rs.close();}
 				if(pstmt != null) {pstmt.close();}
 				if(con != null) {con.close();}
 			}catch(Exception e) {

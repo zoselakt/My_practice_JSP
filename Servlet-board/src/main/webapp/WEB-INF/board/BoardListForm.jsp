@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <jsp:useBean id="vo" class="board.controller.BoardVo"/>
+    <jsp:setProperty property="*" name="vo" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,16 +15,16 @@
 #bList{text-align :center;}    
 </style>
 <script type="text/javascript">
-function writeForm(){
-	location.href="BoardWriteForm.bo";      
-}    
+	function writeForm(){ location.href="BoardWriteForm.bo"; }
+	function gomain(){ location.href="../MainForm.jsp"; }
 </script>
 </head>
 <body>
 	<div id="topForm">
-		<c:if test="${sessionScope.sessionID!=null }">
+		<c:if test="${sessionScope.sessionID != null }">
 			<input type="button" value="글쓰기" onclick="writeForm()">
 		</c:if>
+		<input type="button" value="메인으로" onclick="gomain()">
 	</div>
 	<br>
 	<div id="board">
@@ -34,11 +36,11 @@ function writeForm(){
 				<td>작성일</td>
 				<td>조회수</td>
 			</tr>
-		<c:forEach var="board" items="${requestScope.list }">
+		<c:forEach var="board" items="${requestScope.list}">
 			<tr>
 				<td>${board.board_num }</td>
 				<td>
-					<a href="BoardDetailAction.do?num=${board.board_num }&pageNum=${pageNum}">
+					<a href="BoardDetailAction.bo?num=${board.board_num }&pageNum=${spage}">
 						${board.board_subject }
 					</a>
 				</td>
@@ -52,18 +54,18 @@ function writeForm(){
 	<br>
 	<div id="pageForm">
 		<c:if test= "${startPage != 1}">
-			<a href="BoardListAction.do?page=${startPage-1}">[이전]</a>
+			<a href="BoardListAction.bo?page=${startPage-1}">[이전]</a>
 		</c:if>
 		<c:forEach var="pageNum" begin="${startPage}" end="${endPage}">
 			<c:if test="${pageNum == spage}">
 				${pageNum}&nbsp;
 			</c:if>
 			<c:if test="${pageNum != spage }">
-				<a href="boardListAction.do?page=${pageNum }">${pageNum}&nbsp;</a>
+				<a href="boardListAction.bo?page=${pageNum }">${pageNum}&nbsp;</a>
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage != maxPage }">
-			<a href="boardListAction.do?page=${endPage+1}">[다음]</a>
+			<a href="boardListAction.bo?page=${endPage+1}">[다음]</a>
 		</c:if>
 	</div>
 	<br>

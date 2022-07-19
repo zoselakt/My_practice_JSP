@@ -7,7 +7,7 @@
     String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
     
     Class.forName(driverName);
-    Connection con = DriverManager.getConnection(dbURL, "hr", "hr");
+    Connection con = DriverManager.getConnection(dbURL, "admin", "admin");
     out.print("접속왆료");
     con.close();
     	

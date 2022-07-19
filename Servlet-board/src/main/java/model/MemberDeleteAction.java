@@ -8,6 +8,7 @@ import controller.MemberDao;
 import controller.MemberVo;
 
 public class MemberDeleteAction implements Action {
+	
 	@Override
 	public ActionForward execute (HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("UTF-8");
@@ -25,7 +26,7 @@ public class MemberDeleteAction implements Action {
 		if(check == 1 ) {
 			session.removeAttribute("sessionID");
 			forward.setRedirect(true);
-			forward.setNextPath("Result.do");
+			forward.setNextPath("ResultForm.do");
 		}else {
 			System.out.println("회원삭제실패");
 			return null;

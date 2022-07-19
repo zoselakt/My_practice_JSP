@@ -22,7 +22,7 @@ public class BoardReplyFormAction implements Action{
 		request.setAttribute("page", pageNum);
 		
 		forward.setRedirect(false);
-		forward.setNextPath("BoardReplyForm.do");
+		forward.setNextPath("BoardReplyForm.bo");
 		
 		return forward;
 	}

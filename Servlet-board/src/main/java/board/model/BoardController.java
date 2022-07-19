@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +19,39 @@ public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HashMap<String, Action> commandMap;
        
-    public void init(ServletConfig config) throws ServletException {
-    	loadProperties("jsp/board/properties/BoardCommand");
-    }
+	public void init(ServletConfig config) throws ServletException {
+		loadProperties("/properties/BoardCommand");
+	}
+	
+	/**
+	 * @param filePath
+	 */
+	private void loadProperties(String filePath) { //filepath: /properties/BoardCommand
+		commandMap = new HashMap<String, Action>(); //commandMap : 각 action경로
+		ResourceBundle rb = ResourceBundle.getBundle(filePath);
+		Enumeration<String> actionEnum = rb.getKeys();
+		
+		
+		while(actionEnum.hasMoreElements()) { // false
+			String command = actionEnum.nextElement();
+			String className = rb.getString(command);
+			
+			try {
+				Class actionClass = Class.forName(className); //actionClass: class board.model.BoardReplyAction
+				Action actionInstance = (Action)actionClass.newInstance();
+				
+				if(className.equals("board.model.BoardFormChangeAction")) {
+					BoardFormChangeAction bf = (BoardFormChangeAction) actionInstance;
+					bf.setCommand(command);
+				}
+				commandMap.put(command, actionInstance); 
+				// command: BoardWriteForm.bo / actionInstance: boardReplyAction
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet");
@@ -34,44 +63,30 @@ public class BoardController extends HttpServlet {
 		doProcess(request, response);
 	}
 	
-	private void loadProperties(String filePath) {
-		commandMap = new HashMap<String, Action>();
-		ResourceBundle rb = ResourceBundle.getBundle(filePath);
-		Enumeration<String> actionEnum = rb.getKeys();
-		
-		while(actionEnum.hasMoreElements()) {
-			String command = actionEnum.nextElement();
-			String className = rb.getString(command);
-			try {
-				Class actionClass = Class.forName(className);
-				Action actionInstance = (Action) actionClass.newInstance();
-				
-				if(className.equals("model.boardFormChangeAction")) {
-					BoardFormChangeAction bf = (BoardFormChangeAction) actionInstance;
-					bf.setCommand(command);
-				}
-				commandMap.put(command, actionInstance);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	/**
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestURI = request.getRequestURI();
-		int cmdIdx = requestURI.lastIndexOf("/")+1;
-		String command = requestURI.substring(cmdIdx);
+		String requestURI = request.getRequestURI(); // requestURI : /Servlet-board/BoardListForm.bo
+		int cmdIdx = requestURI.lastIndexOf("/")+1; // lastIndexOf: 141
+		String command = requestURI.substring(cmdIdx); // cmdIdx : 15
 		
-		System.out.println("board cmd : " + command);
+		System.out.println("board cmd : " + command); // command : BoardWriteForm.bo
 		ActionForward forward = null;
 		Action action = null;
 		
 		try {
-			action = commandMap.get(command);
+			action = commandMap.get(command); // -> 여기에서 null값이 뜬다.
+			
 			if(action == null) {
 				System.out.println("명령어: " + command+"는 잘못된 명령입니다.");
 				return;
 			}
-			forward= action.execute(request, response);
+			forward = action.execute(request, response);
+			
 			if(forward != null) {
 				if(forward.isRedirect()) {
 					response.sendRedirect(forward.getNextPath());

@@ -29,7 +29,7 @@ public class MemberModifyAction implements Action{
 		dao.updateMember(vo);
 		
 		forward.setRedirect(true);
-		forward.setNextPath("Result.do");
+		forward.setNextPath("ResultForm.do");
 		session.setAttribute("msg", "0");
 		return forward;
 	}

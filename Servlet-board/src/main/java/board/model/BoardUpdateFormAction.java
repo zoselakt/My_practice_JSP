@@ -3,31 +3,29 @@ package board.model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.controller.BoardDao;
-import board.controller.BoardVo;
+import board.controller.*;
 import model.Action;
 import model.ActionForward;
 
-public class BoardDetailAction implements Action{
+public class BoardUpdateFormAction implements Action{
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ActionForward execute (HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
 		
+		String pageNum = request.getParameter("page");
 		String num = request.getParameter("num");
 		int boardNum = Integer.parseInt(num);
-		String pageNum = request.getParameter("pageNum");
 		
 		BoardDao dao = BoardDao.getInstance();
 		BoardVo vo = dao.getDetail(boardNum);
-		boolean result = dao.updateCount(boardNum);
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("pageNum", pageNum);
 		
-		if(result) {
-			forward.setRedirect(false);
-			forward.setNextPath("BoardDetailForm.bo");
-		}
+		forward.setRedirect(false);
+		forward.setNextPath("BoardUpdateForm.bo");
+		
 		return forward;
 	}
 }

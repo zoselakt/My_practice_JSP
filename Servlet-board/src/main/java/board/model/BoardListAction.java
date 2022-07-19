@@ -37,9 +37,11 @@ public class BoardListAction implements Action{
 		int maxPage = (int) (listCount/10.0 + 0.9);
 		int startPage = (int) (spage/5.0 + 0.8) * 5 - 4;
 		int endPage = startPage + 4;
+		
 		if(endPage > maxPage) {
 			endPage = maxPage;
 		}
+		
 		request.setAttribute("spage", spage);
 		request.setAttribute("maxpage", maxPage);
 		request.setAttribute("startpage", startPage);
@@ -48,7 +50,7 @@ public class BoardListAction implements Action{
 		request.setAttribute("list", list);
 		
 		forward.setRedirect(false);
-		forward.setNextPath("boardListForm.do");
+		forward.setNextPath("BoardListForm.bo");
 		
 		return forward;
 	}

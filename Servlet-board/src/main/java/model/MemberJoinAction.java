@@ -33,7 +33,7 @@ public class MemberJoinAction implements Action{
 		
 		//가입성공시
 		forward.setRedirect(true);
-		forward.setNextPath("Result.do");
+		forward.setNextPath("ResultForm.do");
 		request.getSession().setAttribute("msg", "1");
 		
 		return forward;

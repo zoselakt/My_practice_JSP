@@ -53,18 +53,6 @@ public class BoardVo {
 	public void setBoard_re_ref(int board_re_ref) {
 		this.board_re_ref = board_re_ref;
 	}
-	public int getBoard_re_lev() {
-		return board_re_lev;
-	}
-	public void setBoard_re_lev(int board_re_lev) {
-		this.board_re_lev = board_re_lev;
-	}
-	public int getBoard_re_seq() {
-		return board_re_seq;
-	}
-	public void setBoard_re_seq(int board_re_seq) {
-		this.board_re_seq = board_re_seq;
-	}
 	public Date getBoard_date() {
 		return board_date;
 	}
@@ -85,6 +73,21 @@ public class BoardVo {
 
 	public void setBoard_parent(int board_parent) {
 		this.board_parent = board_parent;
+	}
+	public int getBoard_re_lev() {
+		return board_re_lev;
+	}
+
+	public void setBoard_re_lev(int board_re_lev) {
+		this.board_re_lev = board_re_lev;
+	}
+
+	public int getBoard_re_seq() {
+		return board_re_seq;
+	}
+
+	public void setBoard_re_seq(int board_re_seq) {
+		this.board_re_seq = board_re_seq;
 	}
 
 	@Override

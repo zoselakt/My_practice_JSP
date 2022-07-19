@@ -25,10 +25,12 @@ public class BoardWriteAction implements Action{
 			MultipartRequest multi = new MultipartRequest(request, uploadPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			String fileName = "";
 			Enumeration<String> names = multi.getFileNames();
+			
 			if(names.hasMoreElements()) {
 				String name = names.nextElement();
 				fileName = multi.getFilesystemName(name);
 			}
+			
 			BoardDao dao = BoardDao.getInstance();
 			BoardVo vo = new BoardVo();
 			
@@ -41,7 +43,7 @@ public class BoardWriteAction implements Action{
 			boolean result = dao.boardInsert(vo);
 			if(result) {
 				forward.setRedirect(true);
-				forward.setNextPath("BoardListForm.do");
+				forward.setNextPath("BoardListForm.bo");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -18,7 +18,7 @@
 	<br>
 	<b><font size="6" color="gray">글쓰기</font></b>
 	<br>
-	<form action="BoardWriteAction.do" method="post" name="boardForm" enctype="multipart/form-data">
+	<form action="BoardWriteAction.bo" method="post" name="boardForm" enctype="multipart/form-data">
 		<input type="hidden" name="board_id" value="${sessionScope.sessionID }">
 		<table width="700" border="3" align="center">
 			<tr>

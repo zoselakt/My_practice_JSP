@@ -25,6 +25,7 @@ public class MemberLoginAction implements Action {
 			request.setAttribute("fail", "0");
 			forward.setRedirect(false);
 			forward.setNextPath("LoginForm.do");
+			System.out.println(vo);
 		}else if(check == -1){
 			request.setAttribute("fail", "-1");
 			forward.setRedirect(false);

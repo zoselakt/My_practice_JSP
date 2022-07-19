@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MemberFormChangeAction implements Action{
-	private String form = "MainForm.jsp?contentPage=member/";
+	private String form = "MainForm.jsp?contentPage=/";
 	private String path;
 	
 	public void setCommand(String command) {

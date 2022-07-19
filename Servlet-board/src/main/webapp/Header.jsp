@@ -27,12 +27,13 @@
 
 		<c:if test="${sessionScope.sessionID != null}">
 			<button id="logoutBtn" class="btn btn-primary" onclick="changeView(3)">로그아웃</button>
-			<button id="updateBtn" class="btn btn-primary" >내정보</button>
+			<button id="updateBtn" class="btn btn-primary" onclick="changeView(4)">내정보</button>
 		</c:if>
 		
 		<!--<c:if test="${sessionScope.sessionID != null && sessionScope.sessionID == 'admin' }"> </c:if>-->
 		<c:if test="${sessionScope.sessionID != null}">
-			<button id="memberViewBtn" class="btn btn-warning">회원보기</button>
+			<button id="memberViewBtn" class="btn btn-warning" onclick="changeView(5)">회원보기</button>
+			<button id="memberViewBtn" class="btn btn-warning" onclick="changeView(6)")>게시판으로</button>
 		</c:if>
 		</p>
 	</div>
@@ -44,9 +45,9 @@ function changeView(value){
 	if(value == "0"){                
 		location.href="MainForm.jsp";
 	}else if(value == "1"){                
-		location.href="loginform.do";
+		location.href="Loginform.do";
 	}else if(value == "2"){                
-		location.href="joinForm.do"
+		location.href="JoinForm.do"
 	}else if(value == "3"){                
 		location.href="MemberLogoutAction.do";
 	}else if(value == "4"){
@@ -54,7 +55,7 @@ function changeView(value){
 	}else if(value == "5"){
 		location.href="MemberListAction.do";
 	}else if(value == "6"){
-		location.href="boardListForm.do";
+		location.href="BoardListAction.bo";
 	}
 }    
 </script>

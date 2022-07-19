@@ -7,12 +7,14 @@ import javax.servlet.http.HttpSessionListener;
 import visit.model.VisitCountDao;
 
 public class VisitSessionListener implements HttpSessionListener{
+	
 	@Override
 	public void sessionCreated(HttpSessionEvent sessionEve) {
 		if(sessionEve.getSession().isNew()) {
 			execute(sessionEve);
 		}
 	}
+	
 	private void execute(HttpSessionEvent sessionEve) {
 		VisitCountDao dao = VisitCountDao.getInstance();
 		try {
