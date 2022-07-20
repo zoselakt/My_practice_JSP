@@ -84,7 +84,7 @@ public class VisitCountDao {
 		
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("select count(*) as todaycnt from visit");
+			sql.append("select count(*) as TodayCnt from visit");
 			sql.append("where to_date(v_date, 'yyyy-mm-dd') = to_date(sysdate, 'yyyy-mm-dd')");
 			
 			con = ju.getConnection();
@@ -96,7 +96,7 @@ public class VisitCountDao {
 			}
 			
 			return totalCount;
-		}catch(SQLException  e){
+		}catch(Exception  e){
 			throw new RuntimeException(e.getMessage());
 		}finally {
 			try {

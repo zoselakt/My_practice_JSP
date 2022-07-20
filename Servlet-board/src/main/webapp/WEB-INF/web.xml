@@ -34,4 +34,16 @@
 <listener>
 	<listener-class>visit.controller.VisitSessionListener</listener-class>
 </listener>
+
+	<servlet>
+		<description>Controller</description>
+		<display-name>GuestbookController</display-name>
+		<servlet-name>GuestbookController</servlet-name>
+		<servlet-class>guestbook.model.GuestbookController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GuestbookController</servlet-name>
+		<url-pattern>*.ge</url-pattern>
+	</servlet-mapping>
 </web-app>

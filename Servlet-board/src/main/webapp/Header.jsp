@@ -33,7 +33,8 @@
 		<!--<c:if test="${sessionScope.sessionID != null && sessionScope.sessionID == 'admin' }"> </c:if>-->
 		<c:if test="${sessionScope.sessionID != null}">
 			<button id="memberViewBtn" class="btn btn-warning" onclick="changeView(5)">회원보기</button>
-			<button id="memberViewBtn" class="btn btn-warning" onclick="changeView(6)")>게시판으로</button>
+			<button id="memberViewBtn" class="btn btn-warning" onclick="changeView(6)">게시판</button>
+			<button id="memberViewBtn" class="btn btn-warning" onclick="changeView(7)">방명록</button>
 		</c:if>
 		</p>
 	</div>
@@ -56,6 +57,8 @@ function changeView(value){
 		location.href="MemberListAction.do";
 	}else if(value == "6"){
 		location.href="BoardListAction.bo";
+	}else if(value == "7"){
+		location.href="GuestbookForm.ge";
 	}
 }    
 </script>
