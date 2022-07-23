@@ -18,10 +18,10 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/cos/lib/cos.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/apache-tomcat-9.0.64/lib/tomcat-dbcp.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/mybatis-3.5.7/mybatis-3.5.7.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/NCS/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/cos/lib/cos.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/jakarta1.1.2/lib/jstl.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/jakarta1.1.2/lib/standard.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/mybatis/mybatis-3.5.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/java/tomcat9/lib/tomcat-dbcp.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

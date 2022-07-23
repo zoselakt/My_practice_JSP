@@ -24,7 +24,7 @@ public class VisitCountDao {
 		PreparedStatement pstmt = null;
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into visit (v_date) values (sysdate)");
+			sql.append(" insert into visit (v_date) values (sysdate) ");
 			
 			con = ju.getConnection();
 			con.setAutoCommit(false);
@@ -53,7 +53,7 @@ public class VisitCountDao {
 		
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("select count(*) as totalcnt from visit");
+			sql.append(" select count(*) as totalcnt from visit ");
 			
 			con = ju.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
@@ -84,8 +84,8 @@ public class VisitCountDao {
 		
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("select count(*) as TodayCnt from visit");
-			sql.append("where to_date(v_date, 'yyyy-mm-dd') = to_date(sysdate, 'yyyy-mm-dd')");
+			sql.append(" select count(*) as TodayCnt from visit ");
+			sql.append(" where to_date(v_date, 'yyyy-mm-dd') = to_date(sysdate, 'yyyy-mm-dd') ");
 			
 			con = ju.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
