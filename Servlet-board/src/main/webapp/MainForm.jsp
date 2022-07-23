@@ -20,6 +20,7 @@
 	background-color: #FFCA6C;
 	text-align:center;
 	vertical-align: middle;
+	overflow: auto;
 }        
 #footer {
 	clear: left;

@@ -46,4 +46,16 @@
 		<servlet-name>GuestbookController</servlet-name>
 		<url-pattern>*.ge</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<description>Controller</description>
+		<display-name>CommentController</display-name>
+		<servlet-name>CommentController</servlet-name>
+		<servlet-class>comment.model.CommentController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CommentController</servlet-name>
+		<url-pattern>*.co</url-pattern>
+	</servlet-mapping>
 </web-app>
