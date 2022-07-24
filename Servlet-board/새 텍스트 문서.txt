@@ -91,3 +91,7 @@ CREATE TABLE JSP_COMMENT(
 );
 
 CREATE SEQUENCE COMMENT_SEQ;
+
+ALTER TABLE jsp_board DROP CONSTRAINT "comment_board";
+ALTER TABLE board_comment ADD CONSTRAINT comment_board FOREIGN KEY (comment_board)
+REFERENCES jsp_board(board_num) ON DELETE CASCADE;
