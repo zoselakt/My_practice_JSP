@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+    <%
+    	pageContext.setAttribute("br", "<br/>");
+	    pageContext.setAttribute("cn", "\n");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,9 +72,9 @@ text-align :center;        
 				<label>${guestbook.guestbook_id}</label>&nbsp;&nbsp;
 				<label>${guestbook.guestbook_date}</label>&nbsp;&nbsp;
 				<a href="#" onclick="openReplyForm(${guestbook.guestbook_no})">[답변]</a>&nbsp;
-				<a href="#">[수정]</a>&nbsp;
+				<a href="#" onclick="openUpdateForm(${geustbook.geustbook_no})">[수정]</a>&nbsp;
 				<a href="#" onclick="openDelForm(${guestbook.guestbook_no})">[삭제]</a><br>
-				${guestbook.guestbook_content }<br>
+				${fn:replace(vo.comment_content, cn, br)}<br>
 			</c:forEach>
 				<hr>
 		</div>

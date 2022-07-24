@@ -128,4 +128,102 @@ public class CommentDao {
 		}
 		return list;
 	}
+	public CommentVo getComment(int Comment_num) {
+		CommentVo vo = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ju.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append(" select * from jsp_comment where comment_num = ? ");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, Comment_num);
+			rs= pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new CommentVo();
+				vo.setComment_num(rs.getInt("comment_num"));
+				vo.setComment_board(rs.getInt("comment_board"));
+				vo.setComment_id(rs.getString("comment_id"));
+				vo.setComment_date(rs.getDate("comment_date"));
+				vo.setComment_parent(rs.getInt("comment_parent"));
+				vo.setComment_content(rs.getString("comment_content"));
+			}
+		}catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				if(con != null) {con.close();}
+			} catch (Exception e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return vo;
+	}
+	public boolean deleteComment(int comment_num) {
+		boolean result = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ju.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("Delete from jsp_comment ");
+			sql.append(" where comment_num in ");
+			sql.append(" (select comment_num ");
+			sql.append(" from jsp_comment ");
+			sql.append(" start with comment_num = ? ");
+			sql.append(" connect by prior comment_num = comment_parent) ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, comment_num);
+		int flag = pstmt.executeUpdate();
+		if(flag > 0) {
+			result = true;
+			con.commit();
+		}
+	}catch (SQLException e) {
+		throw new RuntimeException(e.getMessage());
+	}finally {
+		try {
+			if(pstmt != null) {pstmt.close();}
+			if(con != null) {con.close();}
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+		return result;
+	}
+	
+	public boolean updateComment(CommentVo vo) {
+		boolean result = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ju.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("update jsp_comment set ");
+			sql.append(" comment_content = ? ");
+			sql.append(" where comment_num = ? ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, vo.getComment_content());
+			pstmt.setInt(2, vo.getComment_num());
+		int flag = pstmt.executeUpdate();
+		if(flag > 0) {
+			result = true;
+			con.commit();
+		}
+	}catch (SQLException e) {
+		throw new RuntimeException(e.getMessage());
+	}finally {
+		try {
+			if(pstmt != null) {pstmt.close();}
+			if(con != null) {con.close();}
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
+		return result;
+	}
 }
