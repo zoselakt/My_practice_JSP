@@ -30,7 +30,7 @@ public class BoardDao {
 		try {
 			con = ju.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select board_num.nextval from dual");
+			sql.append(" select board_num.nextval from dual ");
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
 			
@@ -60,10 +60,10 @@ public class BoardDao {
 			con = ju.getConnection();
 			con.setAutoCommit(false);
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into jsp_board");
-			sql.append("(board_num, board_id, board_subject, board_content, board_file)");
-			sql.append(", board_re_ref, board_count, board_parent, board_date)");
-			sql.append("values(?,?,?,?,?, ?,?,?,sysdate)");
+			sql.append("insert into jsp_board ");
+			sql.append(" (board_num, board_id, board_subject, board_content, board_file) ");
+			sql.append(", board_re_ref, board_count, board_parent, board_date) ");
+			sql.append(" values(?,?,?,?,?, ?,?,?,sysdate) ");
 			
 			int num = vo.getBoard_num();
 			int ref = vo.getBoard_re_ref();
@@ -117,17 +117,17 @@ public class BoardDao {
 			
 			// 글전체 정렬
 			if(opt == null) {
-				sql.append("select * from");
-				sql.append("(select rownum as rnum, data.* from");
-				sql.append(  "(select level, board_num, board_id, board_subject,");
-				sql.append(      "board_content, board_file, board_count,");
-				sql.append(      "board_re_ref, board_parent, board_date");
-				sql.append(  "from jsp_board)");
-				sql.append(  "start with board_parent = 0");
-				sql.append(  "connect by prior board_num = board_parent");
-				sql.append(  "order siblings by board_re_ref desc)");
-				sql.append("data");
-				sql.append("where rnum >=? and rnum <=?");
+				sql.append("select * from ");
+				sql.append("( select rownum as rnum, data.* from ");
+				sql.append(  "( select level, board_num, board_id, board_subject, ");
+				sql.append(      " board_content, board_file, board_count, ");
+				sql.append(      " board_re_ref, board_parent, board_date ");
+				sql.append(  " from jsp_board) ");
+				sql.append(  " start with board_parent = 0 ");
+				sql.append(  " connect by prior board_num = board_parent ");
+				sql.append(  " order siblings by board_re_ref desc) ");
+				sql.append(" data ");
+				sql.append(" where rnum >=? and rnum <=?") ;
 				
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setInt(1, start);
@@ -136,18 +136,18 @@ public class BoardDao {
 				sql.delete(0, sql.toString().length());
 				// 제목으로 검색
 			}else if(opt.equals("0")){
-				sql.append("select * from");
-				sql.append("(select rownum as rnum, data.* from");
-				sql.append(  "(select level, board_num, board_id, board_subject,");
-				sql.append(      "board_content, board_file, board_count,");
-				sql.append(      "board_re_ref, board_parent, board_date");
-				sql.append(  "from jsp_board)");
-				sql.append(  "where board_subject like=?");
-				sql.append(  "start with board_parent = 0");
-				sql.append(  "connect by prior board_num = board_parent");
-				sql.append(  "order siblings by board_re_ref desc)");
-				sql.append("data");
-				sql.append("where rnum >=? and rnum <=?");
+				sql.append(" select * from ");
+				sql.append(" (select rownum as rnum, data.* from ");
+				sql.append(  " (select level, board_num, board_id, board_subject, ");
+				sql.append(      " board_content, board_file, board_count, ");
+				sql.append(      " board_re_ref, board_parent, board_date ");
+				sql.append(  " from jsp_board) ");
+				sql.append(  " where board_subject like=? ");
+				sql.append(  " start with board_parent = 0 ");
+				sql.append(  " connect by prior board_num = board_parent ");
+				sql.append(  " order siblings by board_re_ref desc) ");
+				sql.append(" data");
+				sql.append(" where rnum >=? and rnum <=? ");
 				
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+condition+"%");
@@ -158,18 +158,18 @@ public class BoardDao {
 				
 				//내용으로 검색
 			}else if(opt.equals("1")) {
-				sql.append("select * from");
-				sql.append("(select rownum as rnum, data.* from");
-				sql.append(  "(select level, board_num, board_id, board_subject,");
-				sql.append(      "board_content, board_file, board_count,");
-				sql.append(      "board_re_ref, board_parent, board_date");
-				sql.append(  "from jsp_board)");
-				sql.append(  "where board_content like=?");
-				sql.append(  "start with board_parent = 0");
-				sql.append(  "connect by prior board_num = board_parent");
-				sql.append(  "order siblings by board_re_ref desc)");
-				sql.append("data");
-				sql.append("where rnum >=? and rnum <=?");
+				sql.append("select * from ");
+				sql.append(" (select rownum as rnum, data.* from ");
+				sql.append(  " (select level, board_num, board_id, board_subject, ");
+				sql.append(      " board_content, board_file, board_count, ");
+				sql.append(      " board_re_ref, board_parent, board_date ");
+				sql.append(  " from jsp_board) ");
+				sql.append(  " where board_content like=? ");
+				sql.append(  " start with board_parent = 0 ");
+				sql.append(  " connect by prior board_num = board_parent ");
+				sql.append(  " order siblings by board_re_ref desc) ");
+				sql.append(" data ");
+				sql.append(" where rnum >=? and rnum <=? ");
 				
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+ condition+"%");
@@ -180,19 +180,19 @@ public class BoardDao {
 				
 				//제목+내용
 			}else if(opt.equals("2")) {
-				sql.append("select * from");
-				sql.append("(select rownum as rnum, data.* from");
-				sql.append(  "(select level, board_num, board_id, board_subject,");
-				sql.append(      "board_content, board_file, board_count,");
-				sql.append(      "board_re_ref, board_parent, board_date");
-				sql.append(  "from jsp_board)");
-				sql.append(  "where board_content like=?");
-				sql.append(  "or board_content like = ?");
-				sql.append(  "start with board_parent = 0");
-				sql.append(  "connect by prior board_num = board_parent");
-				sql.append(  "order siblings by board_re_ref desc)");
-				sql.append("data");
-				sql.append("where rnum >=? and rnum <=?");
+				sql.append(" select * from ");
+				sql.append(" (select rownum as rnum, data.* from ");
+				sql.append(  " (select level, board_num, board_id, board_subject, ");
+				sql.append(      " board_content, board_file, board_count, ");
+				sql.append(      " board_re_ref, board_parent, board_date ");
+				sql.append(  " from jsp_board) ");
+				sql.append(  " where board_content like=? ");
+				sql.append(  " or board_content like = ? ");
+				sql.append(  " start with board_parent = 0 ");
+				sql.append(  " connect by prior board_num = board_parent ");
+				sql.append(  " order siblings by board_re_ref desc) ");
+				sql.append(" data");
+				sql.append(" where rnum >=? and rnum <=?");
 				
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+ condition+"%");
@@ -204,18 +204,18 @@ public class BoardDao {
 				
 				//글쓴이로 검색
 			}else if(opt.equals("3")) {
-				sql.append("select * from");
-				sql.append("(select rownum as rnum, data.* from");
-				sql.append(  "(select level, board_num, board_id, board_subject,");
-				sql.append(      "board_content, board_file, board_count,");
-				sql.append(      "board_re_ref, board_parent, board_date");
-				sql.append(  "from jsp_board)");
-				sql.append(  "where board_id like=?");
-				sql.append(  "start with board_parent = 0");
-				sql.append(  "connect by prior board_num = board_parent");
-				sql.append(  "order siblings by board_re_ref desc)");
-				sql.append("data");
-				sql.append("where rnum >=? and rnum <=?");
+				sql.append(" select * from ");
+				sql.append(" (select rownum as rnum, data.* from ");
+				sql.append(  " (select level, board_num, board_id, board_subject, ");
+				sql.append(      " board_content, board_file, board_count, ");
+				sql.append(      " board_re_ref, board_parent, board_date ");
+				sql.append(  " from jsp_board) ");
+				sql.append(  " where board_id like=? ");
+				sql.append(  " start with board_parent = 0 ");
+				sql.append(  " connect by prior board_num = board_parent ");
+				sql.append(  " order siblings by board_re_ref desc) ");
+				sql.append(" data ");
+				sql.append(" where rnum >=? and rnum <=? ");
 				
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+ condition+"%");
@@ -266,32 +266,32 @@ public class BoardDao {
 			con = ju.getConnection();
 			StringBuffer sql = new StringBuffer();
 			if(opt == null) { // 전체글갯수
-				sql.append("select count(*) from jsp_board");
+				sql.append(" select count(*) from jsp_board ");
 				pstmt = con.prepareStatement(sql.toString());
 				
 				sql.delete(0, sql.toString().length());
 			}else if(opt.equals("0")) { //제목으로 검색한 글의 갯수
-				sql.append("select count(*) from jsp_board where board_subject like = ? ");
+				sql.append(" select count(*) from jsp_board where board_subject like = ? ");
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, '%'+condition+'%');
 				
 				sql.delete(0, sql.toString().length());
 			}else if(opt.equals("1")) { //내용으로 검색한 글의 갯수
-				sql.append("select count(*) from jsp_board where board_content like = ? ");
+				sql.append(" select count(*) from jsp_board where board_content like = ? ");
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, '%'+condition+'%');
 				
 				sql.delete(0, sql.toString().length());
 			}else if(opt.equals("2")) { // 제목+내용으로 검색한 글의 갯수
-				sql.append("select count(*) from jsp_board");
-				sql.append("where board_subject like = ? or board_content like = ?");
+				sql.append(" select count(*) from jsp_board ");
+				sql.append(" where board_subject like = ? or board_content like = ? ");
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, '%'+condition+'%');
 				pstmt.setString(2, '%'+condition+'%');
 				
 				sql.delete(0, sql.toString().length());
 			}else if(opt.equals("3")) { // 글쓴이로 검색한ㄷ 글의 갯수
-				sql.append("select count(*) from jsp_board where board_id like = ?");
+				sql.append(" select count(*) from jsp_board where board_id like = ? ");
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, '%'+condition+'%');
 				
@@ -324,7 +324,7 @@ public class BoardDao {
 		try {
 			con = ju.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select * from jsp_board where Board_num = ?");
+			sql.append(" select * from jsp_board where Board_num = ? ");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardNum);
 			rs = pstmt.executeQuery();
@@ -433,12 +433,12 @@ public class BoardDao {
 		try {
 			con = ju.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("delete from jsp_board");
-			sql.append("where board_num in");
-			sql.append("(select board_num");
-			sql.append("from jsp_board");
-			sql.append("start with board_num = ?");
-			sql.append("connect by prior board_num = board_parent");
+			sql.append(" delete from jsp_board ");
+			sql.append(" where board_num in ");
+			sql.append(" (select board_num ");
+			sql.append(" from jsp_board ");
+			sql.append(" start with board_num = ? ");
+			sql.append(" connect by prior board_num = board_parent ");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardNum);
 			int flag = pstmt.executeUpdate();
@@ -472,12 +472,12 @@ public class BoardDao {
 			con = ju.getConnection();
 			con.setAutoCommit(false);
 			StringBuffer sql = new StringBuffer();
-			sql.append("update jsp_board set");
-			sql.append(" board_subject=?");
-			sql.append(", board_content=?");
-			sql.append(", board_file=?");
-			sql.append(", board_date=sysdate");
-			sql.append("where board_num=?");
+			sql.append(" update jsp_board set ");
+			sql.append(" board_subject=? ");
+			sql.append(", board_content=? ");
+			sql.append(", board_file=? ");
+			sql.append(", board_date=sysdate ");
+			sql.append(" where board_num=? ");
 			
 			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setString(1, vo.getBoard_subject());

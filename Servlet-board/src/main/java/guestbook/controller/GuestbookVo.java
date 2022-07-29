@@ -10,6 +10,7 @@ public class GuestbookVo {
 	private int guestbook_group;
 	private int guestbook_parent;
 	private Date guestbook_date;
+	private int guestbook_level;
 	
 	public GuestbookVo () {}
 	
@@ -55,6 +56,11 @@ public class GuestbookVo {
 	public void setGuestbook_date(Date guestbook_date) {
 		this.guestbook_date = guestbook_date;
 	}
-	
-	
+	public int getGuestbook_level() {
+		return guestbook_level;
+	}
+
+	public void setGuestbook_level(int guestbook_level) {
+		this.guestbook_level = guestbook_level;
+	}
 }

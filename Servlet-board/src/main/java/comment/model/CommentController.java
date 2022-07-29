@@ -1,4 +1,4 @@
-package guestbook.model;
+package comment.model;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -15,73 +15,55 @@ import javax.servlet.http.HttpServletResponse;
 import model.Action;
 import model.ActionForward;
 
-public class GuestbookController extends HttpServlet {
+public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private HashMap<String, Action> commandMap;
+	private HashMap<String, Action> commendMap;
        
 	public void init(ServletConfig config) throws ServletException {
-		loadProperties("/properties/GuestbookCommand");
+		loadProperties("/properties/CommentCommand");
 	}
 	
-	/**
-	 * @param filePath
-	 */
-	private void loadProperties(String filePath) { 
-		commandMap = new HashMap<String, Action>(); 
+	private void loadProperties(String filePath) {
+		commendMap = new HashMap<String, Action>();
 		ResourceBundle rb = ResourceBundle.getBundle(filePath);
 		Enumeration<String> actionEnum = rb.getKeys();
 		
-		
-		while(actionEnum.hasMoreElements()) { // false
+		while(actionEnum.hasMoreElements()) {
 			String command = actionEnum.nextElement();
-			String className = rb.getString(command);
-			
+			String clasName = rb.getString(command);
 			try {
-				Class actionClass = Class.forName(className); //actionClass: class board.model.BoardReplyAction
-				Action actionInstance = (Action)actionClass.newInstance();
-				
-				commandMap.put(command, actionInstance); 
-			}catch(Exception e) {
+				Class actionClass = Class.forName(clasName);
+				Action actionInstance = (Action) actionClass.newInstance();
+				commendMap.put(command, actionInstance);
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet");
+		System.out.println("doget");
 		doProcess(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("dopost");
+		System.out.println("doget");
 		doProcess(request, response);
 	}
-	
-	/**
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String requestURI = request.getRequestURI(); 
-		int cmdIdx = requestURI.lastIndexOf("/")+1; 
+
+	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
+		String requestURI = request.getRequestURI();
+		int cmdIdx = requestURI.lastIndexOf("/") + 1;
 		String command = requestURI.substring(cmdIdx);
 		
 		ActionForward forward = null;
 		Action action = null;
-		
 		try {
-			action = commandMap.get(command); // -> 여기에서 null값이 뜬다.
-			
+			action = commendMap.get(command);
 			if(action == null) {
-				System.out.println("명령어: " + command+"는 잘못된 명령입니다.");
-				return;
+				System.out.println(command + "는 잘못된 명령어입니다.");
 			}
-			
 			forward = action.execute(request, response);
-			
 			if(forward != null) {
 				if(forward.isRedirect()) {
 					response.sendRedirect(forward.getNextPath());
@@ -90,8 +72,9 @@ public class GuestbookController extends HttpServlet {
 					dispatcher.forward(request, response);
 				}
 			}
-		}catch(Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 }

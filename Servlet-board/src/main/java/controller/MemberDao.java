@@ -35,9 +35,9 @@ public class MemberDao {
 			con.setAutoCommit(false);
 			
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into jsp_member");
-			sql.append("(id, password, name, gender, birth, email1, phone, address, reg)");
-			sql.append("values(?,?,?,?, ?,?,?,?, sysdate)");
+			sql.append(" insert into jsp_member ");
+			sql.append(" (id, password, name, gender, birth, email1, phone, address, reg) ");
+			sql.append(" values(?,?,?,?, ?,?,?,?, sysdate) ");
 			stringToDate(vo);
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, vo.getId());
@@ -119,9 +119,9 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("UPDATE jsp_member set");
-			sql.append("password =?, email=?, phone=?, address=?");
-			sql.append("where id=?");
+			sql.append(" UPDATE jsp_member set ");
+			sql.append(" password =?, email=?, phone=?, address=? ");
+			sql.append(" where id=? ");
 			
 			con = ju.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
